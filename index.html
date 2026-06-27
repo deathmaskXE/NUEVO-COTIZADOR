@@ -8,10 +8,12 @@
 <style>
 body{
 margin:0;
-font-family:Arial;
-background:#050505;
+font-family:'Segoe UI',Arial,sans-serif;
+background:radial-gradient(circle at top,#112244 0%,#050505 45%,#000 100%);
+background-attachment:fixed;
 color:white;
 padding:20px;
+overflow-x:hidden;
 }
 
 .container{
@@ -94,12 +96,21 @@ from{text-shadow:0 0 5px #00ffff,0 0 10px #8a2be2;}
 to{text-shadow:0 0 20px #00ffff,0 0 35px #8a2be2;}
 }
 
-/* CARD */
+/* CARD PREMIUM */
 .card{
-background:rgba(255,255,255,0.05);
-padding:15px;
-margin:15px 0;
-border-radius:15px;
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(12px);
+border:1px solid rgba(0,255,255,.25);
+padding:20px;
+margin:20px 0;
+border-radius:22px;
+box-shadow:0 0 25px rgba(0,255,255,.15);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-3px);
+box-shadow:0 0 35px cyan;
 }
 
 /* INPUTS */
@@ -113,26 +124,50 @@ background:#111;
 color:white;
 }
 
+select:hover,
+input:hover,
+textarea:hover{
+border:1px solid cyan;
+}
+
+select:focus,
+input:focus,
+textarea:focus{
+outline:none;
+box-shadow:0 0 15px cyan;
+}
+
 /* BOTONES */
 button{
 width:100%;
-padding:15px;
+padding:16px;
 border:none;
-border-radius:12px;
+border-radius:14px;
 font-weight:bold;
+font-size:16px;
 cursor:pointer;
-margin-top:10px;
+margin-top:12px;
+transition:.25s;
+}
+
+button:hover{
+transform:scale(1.03);
+}
+
+button:active{
+transform:scale(.98);
 }
 
 .wa{background:linear-gradient(90deg,#00ffff,#8a2be2);color:white;}
 .pay{background:linear-gradient(90deg,#8a2be2,#00ffff);color:white;}
 .link{background:#111;border:1px solid #00ffff;color:#00ffff;}
 
-/* RESULTADOS */
+/* RESULTADOS PREMIUM */
 .result{
-background:#0d0d0d;
-padding:10px;
-border-radius:10px;
+background:#0b0f17;
+padding:18px;
+border-radius:18px;
+border:1px solid rgba(0,255,255,.25);
 }
 
 .total{
