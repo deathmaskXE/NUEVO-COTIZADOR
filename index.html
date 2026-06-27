@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>XE Servicio Electrónico - Soporte Premium</title>
 
+<!-- Tipografía Premium -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -74,7 +75,7 @@ body {
 }
 
 .logo-img {
-    width: 190px; /* Tamaño más imponente */
+    width: 190px;
     height: auto;
     filter: drop-shadow(0 6px 20px rgba(0, 114, 255, 0.3));
     animation: floatLogo 4s ease-in-out infinite alternate;
@@ -127,7 +128,7 @@ body {
     max-height: 85%;
     object-fit: contain;
     filter: drop-shadow(0 15px 30px rgba(0,0,0,0.7));
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .console-display-panel:hover .console-glow-frame {
@@ -225,7 +226,7 @@ select:focus, input:focus, textarea:focus {
     color: var(--cyan-accent);
 }
 
-/* TODOS LOS BOTONES PREMIUM RESTAURADOS */
+/* BOTONES */
 button, .action-link-btn {
     display: flex;
     align-items: center;
@@ -397,6 +398,7 @@ button, .action-link-btn {
 
 <body>
 
+<!-- BARRA DE BENEFICIOS INICIAL -->
 <div class="top-bar">
     <div class="top-bar-item">
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -414,12 +416,15 @@ button, .action-link-btn {
 
 <div class="container">
 
+    <!-- CABECERA LIMPIA: SOLO LOGOTIPO GRANDE -->
     <div class="header-brand">
         <img src="logo.png" class="logo-img" alt="Logo XE">
     </div>
 
+    <!-- RESTRUCTURACIÓN DEL VISOR Y COTIZADOR -->
     <div class="layout-grid">
         
+        <!-- PANEL IZQUIERDO: VISOR DE CONSOLAS Y DIRECCIONES -->
         <div class="console-display-panel">
             <div class="console-glow-frame">
                 <img id="consoleImg" src="xbox-one.png" alt="Consola">
@@ -436,6 +441,7 @@ button, .action-link-btn {
             </div>
         </div>
 
+        <!-- PANEL DERECHO: FORMULARIO COMPLETO Y PRECIOS -->
         <div class="card" style="background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border-glass); padding: 30px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); margin:0;">
             
             <div class="form-group">
@@ -458,6 +464,7 @@ button, .action-link-btn {
                 <textarea id="obs" rows="3" placeholder="Detalles o problemas observados..."></textarea>
             </div>
 
+            <!-- EXPOSICIÓN DEL TOTAL -->
             <div class="price-showcase-box">
                 <div class="price-row">
                     <span>💰 Precio:</span>
@@ -473,6 +480,7 @@ button, .action-link-btn {
                 </div>
             </div>
 
+            <!-- TODOS LOS BOTONES DEL SISTEMA -->
             <button class="wa-btn" onclick="sendWA()">📲 WhatsApp</button>
             <button class="pay-btn" onclick="agendar()">💳 Anticipo y agendar</button>
 
@@ -485,6 +493,7 @@ button, .action-link-btn {
 
     </div>
 
+    <!-- SECCIÓN DE RESEÑAS -->
     <div class="card-secondary reviews-box">
         <h3 class="section-title">⭐ Opiniones de Clientes</h3>
         <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 24px;">
@@ -504,6 +513,7 @@ button, .action-link-btn {
         </div>
     </div>
 
+    <!-- INFORMACIÓN DE DEPÓSITOS -->
     <div class="card-secondary paybox">
         <h3 class="section-title">💳 Datos de pago</h3>
         <div class="payment-grid">
@@ -525,6 +535,7 @@ button, .action-link-btn {
 
 </div>
 
+<!-- COMPONENTE JAVASCRIPT ORIGINAL INTEGRO -->
 <script>
 let currentRating = 0;
 
@@ -574,4 +585,91 @@ const data = {
     ],
     "Xbox Series X":[
         ["Revisión / Diagnóstico",200,"1 a 2 días"],
+        ["Mantenimiento",1500,"1 Hora"],
+        ["HDMI",1500,"1 Hora"],
+        ["Bluetooth",1000,"10 Min"],
+        ["WiFi",1000,"10 Min"],
+        ["Retimer",1800,"1 Hora"],
+        ["ESD",2200 hostage,"5 Hrs"],
+        ["SSD",5000,"2 Hrs"],
+        ["Ethernet",1500,"1 Hora"],
+        ["RAM/APU",2600,"2 Hrs"],
+        ["MOSFET",1800,"2 Hrs"],
+        ["Fuente",1200,"3 Hrs"],
+        ["Cambio fuente",1500,"20 Min"],
+        ["Ventilador",1400,"10 Min"]
+    ],
+    "PS4":[
+        ["Revisión / Diagnóstico",200,"1 a 2 días"],
+        ["Mantenimiento",700,"1 Hora"],
+        ["Disco 1TB",2000,"1 Hora"],
+        ["Disco 500GB",1600,"1 Hora"],
+        ["HDMI",1000,"1 Hora"],
+        ["Encoder",1100,"1 Hora"],
+        ["Lectora",1000,"2 Hrs"]
+    ],
+    "PS4 Pro":[
+        ["Revisión / Diagnóstico",200,"1 a 2 días"],
+        ["Mantenimiento",900,"1 Hora"],
+        ["Disco 1TB",2000,"1 Hora"],
+        ["Disco 500GB",1600,"1 Hora"],
+        ["HDMI",1000,"1 Hora"],
+        ["Encoder",1100,"1 Hora"],
+        ["Lectora",1200,"2 Hrs"]
+    ],
+    "PS5":[
+        ["Revisión / Diagnóstico",200,"1 a 2 días"],
+        ["Mantenimiento",1500,"1 Hora"],
+        ["SSD chipset",2400,"1 Hora"],
+        ["HDMI",1500,"1 Hora"],
+        ["Encoder",1500,"1 Hora"],
+        ["Fuente",1200,"2 Hrs"],
+        ["Cambio fuente",1800,"30 Min"],
+        ["Southbridge",2500,"3 Hrs"],
+        ["BIOS",2000,"3 Hrs"],
+        ["IC/Fusible",2000,"4 Hrs"]
+    ],
+    "Nintendo Switch":[
+        ["Revisión / Diagnóstico",200,"1 a 2 días"],
+        ["Mantenimiento",500,"1 Hora"],
+        ["Puerto de Carga Type-C",700,"1 Hora"],
+        ["Chip de Video M92T36",900,"1 Hora"],
+        ["IC de Carga BQ24193",900,"1 Hora"],
+        ["Pantalla / Touch",1200,"2 Hrs"],
+        ["Lector de Juegos",600,"30 Min"],
+        ["Batería",600,"20 Min"]
+    ]
+};
+
+const imagenes = {
+    "Xbox One":"xbox-one.png",
+    "Xbox One S":"xbox-one-s.png",
+    "Xbox Series S":"xbox-series-s.png",
+    "Xbox Series X":"xbox-series-x.png",
+    "PS4":"ps4.png",
+    "PS4 Pro":"ps4-pro.png",
+    "PS5":"ps5.png",
+    "Nintendo Switch":"switch.png"
+}; 
+
+let c = document.getElementById("consola");
+let s = document.getElementById("servicio");
+
+Object.keys(data).forEach(x => {
+    let o = document.createElement("option");
+    o.value = x;
+    o.textContent = x;
+    c.appendChild(o);
+});
+
+loadServices();
+renderReviews();
+
+function loadServices() {
+    const targetImg = document.getElementById("consoleImg");
+    targetImg.style.opacity = 0;
+    targetImg.style.transform = "scale(0.85)";
     
+    setTimeout(() => {
+        targetImg.src = imagenes[c.value];
+        targetImg.st
