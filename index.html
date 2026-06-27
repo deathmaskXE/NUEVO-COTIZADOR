@@ -160,6 +160,7 @@ transform:scale(.98);
 
 .wa{background:linear-gradient(90deg,#00ffff,#8a2be2);color:white;}
 .pay{background:linear-gradient(90deg,#8a2be2,#00ffff);color:white;}
+.clear{background:linear-gradient(90deg,#ff4e50,#f9d423);color:white;}
 .link{background:#111;border:1px solid #00ffff;color:#00ffff;}
 
 /* RESULTADOS PREMIUM */
@@ -217,6 +218,7 @@ margin-top:15px;
 
 <button class="wa" onclick="sendWA()">📲 WhatsApp</button>
 <button class="pay" onclick="agendar()">💳 Anticipo y agendar</button>
+<button class="clear" onclick="limpiarForm()">🗑 Limpiar Cotización</button>
 
 <button class="link" onclick="window.open('https://deathmaskxe.github.io/CotizadorXE/')">
 🕹 Cotizador de Controles
@@ -435,6 +437,13 @@ let msg=`💳 XE SERVICIO ELECTRÓNICO
 Enviar comprobante`;
 
 window.open("https://wa.me/527471731852?text="+encodeURIComponent(msg));
+}
+
+function limpiarForm(){
+document.getElementById("cliente").value = "";
+document.getElementById("obs").value = "";
+c.selectedIndex = 0;
+loadServices();
 }
 
 </script>
