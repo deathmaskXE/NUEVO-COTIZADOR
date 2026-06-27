@@ -3,720 +3,458 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XE Servicio Electrónico</title>
+<title>XE Servicio Electrónico - Cotizador Premium</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-body{
-margin:0;
-font-family:'Segoe UI',Roboto,Arial,sans-serif;
-background:#060608; /* Negro Absoluto Mate */
-color:#e2e8f0; /* Blanco Platino */
-padding:20px;
-overflow-x:hidden;
+:root {
+    --bg-main: #06070b;
+    --bg-card: rgba(13, 15, 22, 0.75);
+    --border-glass: rgba(255, 255, 255, 0.05);
+    --blue-metallic: #0072ff;
+    --cyan-accent: #00f2fe;
+    --text-primary: #e2e8f0;
+    --text-muted: #707e94;
 }
 
-.container{
-max-width:800px;
-margin:auto;
-position:relative;
-padding:20px 10px;
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #0b1528 0%, #06070b 60%);
+    background-attachment: fixed;
+    color: var(--text-primary);
+    padding: 0;
+    overflow-x: hidden;
 }
 
-/* LOGO ÍCONO XE */
-.logo{
-text-align:center;
-padding:10px 0 30px 0;
+/* 1. BARRA SUPERIOR DE BENEFICIOS */
+.top-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    background: rgba(6, 7, 11, 0.6);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-glass);
+    padding: 14px 20px;
 }
 
-.logo-img{ 
-width:160px; 
-display:block; 
-margin:auto; 
-filter:drop-shadow(0 6px 15px rgba(0,0,0,0.7));
-animation:logoFloat 4s ease-in-out infinite alternate; 
-} 
-
-@keyframes logoFloat{ 
-from{ transform:translateY(0); } 
-to{ transform:translateY(-8px); } 
-} 
-
-.subtitulo{ 
-margin-top:15px; 
-color:#94a3b8; /* Gris Plata */
-font-size: 15px;
-letter-spacing: 2px;
-margin-bottom:20px; 
-font-weight: 400;
-text-transform: uppercase;
-} 
-
-/* CONTENEDOR DE CONSOLA */
-.console-box{ 
-display:flex; 
-justify-content:center; 
-margin:25px auto; 
-background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, rgba(0,0,0,0) 70%);
-padding: 20px;
-border-radius: 50%;
-width: 280px;
-height: 280px;
-align-items: center;
-box-shadow: 0 0 40px rgba(0, 242, 254, 0.08);
-transition: all 0.5s ease;
-} 
-
-.console-box img{ 
-width:230px; 
-max-width:100%; 
-transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-filter: drop-shadow(0 15px 25px rgba(0,0,0,0.8));
-} 
-
-.console-box:hover {
-box-shadow: 0 0 50px rgba(0, 242, 254, 0.22);
-background: radial-gradient(circle, rgba(0, 242, 254, 0.22) 0%, rgba(0,0,0,0) 70%);
+.top-bar-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    font-weight: 500;
 }
 
-.console-box:hover img {
-transform: scale(1.06);
+.top-bar-item svg {
+    width: 16px;
+    height: 16px;
+    color: var(--cyan-accent);
 }
 
-/* CARDS PREMIUM (GLASSMORPHISM NEGRO METÁLICO) */
-.card, .paybox, .reviews-box{
-background: linear-gradient(135deg, rgba(20, 20, 25, 0.9) 0%, rgba(10, 10, 12, 0.95) 100%);
-backdrop-filter: blur(20px);
--webkit-backdrop-filter: blur(20px);
-border: 1px solid rgba(30, 66, 159, 0.2); /* Borde Azul Metálico sutil */
-padding: 30px;
-margin: 25px 0;
-border-radius: 18px;
-box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+/* CONTENEDOR PRINCIPAL */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px 20px;
 }
 
-/* FORMULARIOS */
+/* 2. ENCABEZADO CON LOGO CENTRADO */
+.header-brand {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo-img {
+    width: 120px;
+    height: auto;
+    filter: drop-shadow(0 4px 15px rgba(0, 114, 255, 0.2));
+    animation: floatLogo 4s ease-in-out infinite alternate;
+}
+
+@keyframes floatLogo {
+    from { transform: translateY(0); }
+    to { transform: translateY(-6px); }
+}
+
+.main-title {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin: 20px 0 6px 0;
+    background: linear-gradient(180deg, #ffffff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.main-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0;
+    font-weight: 300;
+}
+
+/* 3. DISEÑO DE DOS COLUMNAS (Estilo App de Consolas) */
+.layout-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* CONTENEDOR DE LA IMAGEN DE CONSOLA (RESPLANDOR CONTROLADO) */
+.console-display-panel {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glass);
+    border-radius: 24px;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* El marco tecnológico que rodea la consola */
+.console-glow-frame {
+    margin: 20px auto;
+    width: 100%;
+    max-width: 340px;
+    height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 24px;
+    background: radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, rgba(0,0,0,0) 70%);
+    border: 1px solid rgba(0, 242, 254, 0.15);
+    box-shadow: 0 0 30px rgba(0, 242, 254, 0.05);
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.console-glow-frame img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.7));
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.console-display-panel:hover .console-glow-frame {
+    border-color: rgba(0, 242, 254, 0.3);
+    box-shadow: 0 0 40px rgba(0, 242, 254, 0.12);
+}
+
+.console-display-panel:hover .console-glow-frame img {
+    transform: scale(1.05);
+}
+
+/* ELEMENTOS DE FORMULARIO DE ALTA GAMA */
+.form-group {
+    margin-bottom: 22px;
+}
+
 label {
-display: block;
-font-size: 12px;
-text-transform: uppercase;
-letter-spacing: 2px;
-color: #3b82f6; /* Azul Metálico Claro para Etiquetas */
-margin-top: 20px;
-margin-bottom: 6px;
-font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--cyan-accent);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+label svg {
+    width: 14px;
+    height: 14px;
 }
 
 select, input, textarea {
-width: 100%;
-padding: 14px;
-margin: 4px 0 12px 0;
-border-radius: 8px;
-border: 1px solid rgba(255, 255, 255, 0.08);
-background: #111114;
-color: #f1f5f9;
-font-size: 15px;
-box-sizing: border-box;
-transition: all 0.3s ease;
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #0d0f16;
+    color: #ffffff;
+    font-size: 14px;
+    font-family: inherit;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
 }
 
 select:hover, input:hover, textarea:hover {
-border-color: rgba(30, 66, 159, 0.5);
+    border-color: rgba(0, 114, 255, 0.4);
 }
 
 select:focus, input:focus, textarea:focus {
-outline: none;
-border-color: #3b82f6; /* Foco Azul Metálico */
-background: #141419;
-box-shadow: 0 0 0 3px rgba(30, 66, 159, 0.25);
+    outline: none;
+    border-color: var(--blue-metallic);
+    background: #121520;
+    box-shadow: 0 0 0 3px rgba(0, 114, 255, 0.15);
 }
 
-/* BOTONES ESTILO LUJO */
-button, .btn-link {
-display: block;
-width: 100%;
-padding: 16px;
-border: none;
-border-radius: 8px;
-font-weight: 600;
-font-size: 15px;
-cursor: pointer;
-margin-top: 14px;
-transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-box-sizing: border-box;
-text-transform: uppercase;
-letter-spacing: 1px;
-text-align: center;
-text-decoration: none;
+/* 4. TARJETA DE PRECIO DESTACADA */
+.price-showcase-box {
+    background: linear-gradient(135deg, rgba(0, 114, 255, 0.1) 0%, rgba(0, 242, 254, 0.05) 100%);
+    border: 1px solid rgba(0, 242, 254, 0.2);
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 25px;
 }
 
-/* Azul Metálico Sólido */
-.wa {
-background: linear-gradient(135deg, #1e429f 0%, #1a3675 100%);
-color: #ffffff;
-box-shadow: 0 4px 15px rgba(30, 66, 159, 0.3);
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
 }
 
-.wa:hover {
-background: linear-gradient(135deg, #2554c7 0%, #1e429f 100%);
-transform: translateY(-2px);
-box-shadow: 0 6px 20px rgba(30, 66, 159, 0.5);
+.price-row span {
+    color: #ffffff;
+    font-weight: 500;
 }
 
-/* Negro Metálico Pulido */
-.pay {
-background: linear-gradient(135deg, #1e1e24 0%, #111115 100%);
-color: #e2e8f0;
-border: 1px solid rgba(255, 255, 255, 0.15);
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.pay:hover {
-border-color: #3b82f6;
-background: linear-gradient(135deg, #25252c 0%, #16161c 100%);
-transform: translateY(-2px);
+.total-title {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #ffffff;
 }
 
-/* Links secundarios en Plata Platino */
-.link {
-background: transparent;
-border: 1px solid rgba(255, 255, 255, 0.1);
-color: #94a3b8;
+.total-amount {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--cyan-accent);
 }
 
-.link:hover {
-background: rgba(255, 255, 255, 0.03);
-border-color: #3b82f6; /* Cambio a azul metálico */
-color: #ffffff;
-transform: translateY(-2px);
+/* 5. BOTONES MODERNOS INTERACTIVOS */
+button, .action-link-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 14px;
+    transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+    box-sizing: border-box;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
 }
 
-/* BOTONES DE REDES Y UBICACIÓN */
-.social-grid {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 12px;
-margin-top: 12px;
+.wa-btn {
+    background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
+    color: white;
 }
 
-.social-grid .btn-link {
-margin-top: 0;
-font-size: 13px;
-padding: 12px;
+.wa-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 114, 255, 0.4);
 }
 
-.btn-geo {
-background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
-color: #00f2fe;
-border: 1px solid rgba(0, 242, 254, 0.3);
-}
-.btn-geo:hover {
-border-color: #00f2fe;
-box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
-transform: translateY(-2px);
+.pay-btn {
+    background: #121520;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.btn-social {
-background: linear-gradient(135deg, #111114 0%, #1e1e24 100%);
-color: #e2e8f0;
-border: 1px solid rgba(255, 255, 255, 0.1);
-}
-.btn-social:hover {
-border-color: #3b82f6;
-color: #3b82f6;
-transform: translateY(-2px);
+.pay-btn:hover {
+    border-color: var(--cyan-accent);
+    background: #171b29;
+    transform: translateY(-2px);
 }
 
-/* RESULTADOS MÍNIMALISTAS */
-.result {
-background: #09090b;
-padding: 20px;
-border-radius: 10px;
-border: 1px solid rgba(255, 255, 255, 0.03);
-margin-top: 25px;
-margin-bottom: 10px;
+.secondary-link {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text-muted);
 }
 
-.result span {
-font-weight: 600;
-color: #ffffff;
+.secondary-link:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    transform: translateY(-1px);
 }
 
-.total {
-font-size: 24px;
-font-weight: 700;
-color: #00f2fe !important;
-margin-top: 12px;
-padding-top: 12px;
-border-top: 1px solid rgba(255, 255, 255, 0.06);
-letter-spacing: 0.5px;
+/* SECCIONES COMPLEMENTARIAS (OPINIONES Y PAGOS) */
+.card-secondary {
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--border-glass);
+    padding: 30px;
+    border-radius: 24px;
+    margin-top: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
-.total span {
-color: #00f2fe !important;
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 
-/* SECCIÓN DE PAGOS */
-.paybox h3, .reviews-box h3 {
-color: #3b82f6; /* Azul Metálico */
-font-size: 16px;
-margin-top: 0;
-margin-bottom: 20px;
-font-weight: 600;
-letter-spacing: 1.5px;
-text-transform: uppercase;
+.section-title svg {
+    width: 20px;
+    height: 20px;
+    color: var(--blue-metallic);
 }
 
-.paybox p {
-margin: 6px 0;
-color: #cbd5e1;
-font-size: 15px;
+.payment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
-.paybox p strong {
-color: #ffffff;
-font-weight: 600;
+.payment-method {
+    background: #0d0f16;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 20px;
+    border-radius: 16px;
 }
 
-.paybox hr, .reviews-box hr {
-border: 0;
-height: 1px;
-background: rgba(255, 255, 255, 0.06);
-margin: 20px 0;
+.payment-method h4 {
+    margin: 0 0 8px 0;
+    color: var(--cyan-accent);
+    font-size: 14px;
 }
 
-/* SISTEMA DE CALIFICACIÓN POR ESTRELLAS */
-.rating-selector {
-display: flex;
-gap: 8px;
-margin: 8px 0 15px 0;
+.payment-method p {
+    margin: 4px 0;
+    font-size: 13px;
+    color: var(--text-muted);
 }
 
-.rating-selector span {
-font-size: 26px;
-cursor: pointer;
-color: #334155;
-transition: color 0.2s;
+.payment-method .account-number {
+    font-size: 15px;
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin: 8px 0;
 }
 
-.rating-selector span.active, .rating-selector span:hover {
-color: #3b82f6; /* Estrellas azul metálico */
+/* SISTEMA DE OPINIONES MEJORADO */
+.star-rating-area {
+    display: flex;
+    gap: 6px;
+    margin: 12px 0;
 }
 
-/* FEED DE OPINIONES */
-.reviews-feed {
-max-height: 250px;
-overflow-y: auto;
-margin-top: 15px;
-padding-right: 5px;
+.star-rating-area span {
+    font-size: 24px;
+    cursor: pointer;
+    color: #1e293b;
+    transition: color 0.2s ease;
 }
 
-.reviews-feed::-webkit-scrollbar {
-width: 4px;
-}
-.reviews-feed::-webkit-scrollbar-thumb {
-background: rgba(30, 66, 159, 0.4);
-border-radius: 4px;
+.star-rating-area span.active, .star-rating-area span:hover {
+    color: #eab308;
 }
 
-.review-item {
-background: rgba(255, 255, 255, 0.02);
-padding: 12px;
-border-radius: 8px;
-margin-bottom: 10px;
-border-left: 3px solid #3b82f6;
+.reviews-scroll-container {
+    max-height: 220px;
+    overflow-y: auto;
+    margin-top: 20px;
 }
 
-.review-header {
-display: flex;
-justify-content: space-between;
-font-size: 13px;
-color: #94a3b8;
-margin-bottom: 4px;
+.reviews-scroll-container::-webkit-scrollbar {
+    width: 4px;
 }
 
-.review-name {
-font-weight: 600;
-color: #ffffff;
+.reviews-scroll-container::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
 }
 
-.review-stars {
-color: #3b82f6;
+.single-review-card {
+    background: rgba(255,255,255,0.02);
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border-left: 3px solid var(--blue-metallic);
 }
 
-.review-text {
-font-size: 14px;
-color: #cbd5e1;
-word-break: break-word;
-}
-
-/* RESPONSIVO */
-@media(max-width: 600px){
-body { padding: 10px; }
-.card, .paybox, .reviews-box { padding: 20px; }
-.console-box { width: 220px; height: 220px; }
-.console-box img { width: 170px; }
-.social-grid { grid-template-columns: 1fr; }
+/* RESPONSIVE DESIGN */
+@media(max-width: 900px) {
+    .layout-grid {
+        grid-template-columns: 1fr;
+    }
+    .top-bar {
+        display: none; /* Se ocultan los textos de la topbar en móviles pequeños para limpieza */
+    }
 }
 </style>
 </head>
 
 <body>
 
+<div class="top-bar">
+    <div class="top-bar-item">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+        Reparación Profesional
+    </div>
+    <div class="top-bar-item">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        Garantía en Servicios
+    </div>
+    <div class="top-bar-item">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+        Refacciones Originales
+    </div>
+</div>
+
 <div class="container">
 
-<div class="logo"> 
-<img src="logo.png" class="logo-img"> 
-<p class="subtitulo">Especialistas en reparación de consolas</p> 
-<div class="console-box"> 
-<img id="consoleImg" src="xbox-one.png"> 
-</div> 
-</div>
-
-<div class="card">
-
-<label>Consola</label>
-<select id="consola" onchange="loadServices()"></select>
-
-<label>Servicio</label>
-<select id="servicio" onchange="calc()"></select>
-
-<label>Cliente</label>
-<input id="cliente" placeholder="Tu nombre">
-
-<label>Describe tu falla</label>
-<textarea id="obs" rows="3" placeholder="Detalles de la falla de tu consola..."></textarea>
-
-<div class="result">
-💰 Precio: <span id="precio">$0</span><br style="content: ''; margin-bottom: 6px; display: block;">
-⏱ Tiempo: <span id="tiempo">-</span><br>
-<div class="total">TOTAL: <span id="total">$0</span></div>
-</div>
-
-<button class="wa" onclick="sendWA()">📲 WhatsApp</button>
-<button class="pay" onclick="agendar()">💳 Anticipo y agendar</button>
-
-<button class="link" onclick="window.open('https://deathmaskxe.github.io/CotizadorXE/')">
-🕹 Cotizador de Controles
-</button>
-
-<button class="link" onclick="window.open('https://deathmaskxe.github.io/Tester-de-funcionalidad-controles/')">
-🎮 Tester de Controles
-</button>
-
-<a href="https://maps.app.goo.gl/x9gqptSPo6yqdxF1A" target="_blank" class="btn-link btn-geo">📍 Ver nuestra ubicación en Google Maps</a>
-
-<div class="social-grid">
-<a href="https://www.facebook.com/share/1BRU5UUK5c/" target="_blank" class="btn-link btn-social">🔵 Facebook</a>
-<a href="https://www.tiktok.com/@xeservicioelectronico?_r=1&_t=ZS-97ZOLYTu5zU" target="_blank" class="btn-link btn-social">🎵 TikTok</a>
-</div>
-<div style="margin-top: 12px;">
-<a href="https://youtube.com/@xeservicioelectronico?si=MDtE89WtQbayO_YN" target="_blank" class="btn-link btn-social">📺 YouTube</a>
-</div>
-
-</div>
-
-<div class="reviews-box">
-<h3>⭐ Opiniones de Clientes</h3>
-
-<div class="review-form">
-<input id="revName" placeholder="Tu Nombre o Usuario" style="padding: 10px; font-size: 14px;">
-<div class="rating-selector" id="starSelector">
-<span onclick="setRating(1)">★</span>
-<span onclick="setRating(2)">★</span>
-<span onclick="setRating(3)">★</span>
-<span onclick="setRating(4)">★</span>
-<span onclick="setRating(5)">★</span>
-</div>
-<textarea id="revText" rows="2" placeholder="Escribe tu reseña o experiencia con nuestro servicio..." style="padding: 10px; font-size: 14px; margin-bottom: 8px;"></textarea>
-<button class="pay" onclick="saveReview()" style="padding: 10px; font-size: 13px; margin-top: 5px;">Publicar Opinión</button>
-</div>
-
-<hr>
-
-<div class="reviews-feed" id="reviewsFeed">
-</div>
-</div>
-
-<div class="paybox">
-
-<h3>💳 Datos de pago</h3>
-
-<p>🏦 <strong>Banorte</strong></p>
-<p style="letter-spacing: 1px;">4189 1400 1021 7767</p>
-<p style="color: #94a3b8; font-size: 13px;">Irving Daniel Sánchez</p>
-
-<hr>
-
-<p>💼 <strong>MercadoPago</strong></p>
-<p style="letter-spacing: 1px;">722969020089368829</p>
-<p style="color: #94a3b8; font-size: 13px;">Irving Daniel Sánchez Nava</p>
-
-<hr>
-
-<p style="color:#00f2fe; font-weight: 500; font-size: 14px; text-align: center; margin-bottom: 0;">
-Envía comprobante por WhatsApp para confirmar cita
-</p>
-
-</div>
-
-</div>
-
-<script>
-let currentRating = 0;
-
-const data = {
-
-"Xbox One":[
-["Revisión / Diagnóstico",200,"1 a 2 días"],
-["Mantenimiento",600,"1 Hora"],
-["Cambio ventilador",400,"15 Min"],
-["Cambio módulo inalámbrico",400,"15 Min"],
-["Panel frontal",600,"15 Min"],
-["MOSFET",900,"1 Hora"],
-["Realtek",900,"40 Min"],
-["Filtros o ESD",900,"1 Hora"],
-["HDMI",900,"1 Hora"],
-["IC Power",1000,"1 Hora"]
-],
-
-"Xbox One S":[
-["Revisión / Diagnóstico",200,"1 a 2 días"],
-["Mantenimiento",600,"1 Hora"],
-["Ventilador",500,"15 Min"],
-["Módulo inalámbrico",500,"15 Min"],
-["Panel frontal",600,"15 Min"],
-["MOSFET",1000,"1 Hora"],
-["Realtek",1000,"40 Min"],
-["Filtros",600,"1 Hora"],
-["ESD",1200,"1 Hora"],
-["HDMI",1000,"1 Hora"],
-["IC Power",1200,"1 Hora"],
-["Retimer",1000,"1 Hora"],
-["Carcasa",800,"30 Min"]
-],
-
-"Xbox Series S":[
-["Revisión / Diagnóstico",200,"1 a 2 días"],
-["Mantenimiento",1200,"1 Hora"],
-["HDMI",1300,"1 Hora"],
-["Bluetooth",800,"10 Min"],
-["WiFi",900,"10 Min"],
-["Retimer",1500,"1 Hora"],
-["ESD",1800,"4 Hrs"],
-["SSD",2300,"2 Hrs"],
-["Ethernet",1200,"1 Hora"],
-["RAM/APU",2000,"2 Hrs"],
-["MOSFET",1500,"2 Hrs"],
-["Fuente",900,"3 Hrs"],
-["Cambio fuente",1200,"20 Min"],
-["Ventilador",1000,"10 Min"]
-],
-
-"Xbox Series X":[
-["Revisión / Diagnóstico",200,"1 a 2 días"],
-["Mantenimiento",1500,"1 Hora"],
-["HDMI",1500,"1 Hora"],
-["Bluetooth",1000,"10 Min"],
-["WiFi",1000,"10 Min"],
-["Retimer",1800,"1 Hora"],
-["ESD",2200,"5 Hrs"],
-["SSD",5000,"2 Hrs"],
-["Ethernet",1500,"1 Hora"],
-["RAM/APU",2600,"2 Hrs"],
-["MOSFET",1800,"2 Hrs"],
-["Fuente",1200,"3 Hrs"],
-["Cambio fuente",1500,"20 Min"],
-["Ventilador",1400,"10 Min"]
-],
-
-"PS4":[
-["Revisión / Diagnóstico",200,"1 a 2 días"],
-["Mantenimiento",700,"1 Hora"],
-["Disco 1TB",2000,"1 Hora"],
-["Disco 500GB",1600,"1 Hora"],
-["HDMI",1000,"1 Hora"],
-["Encoder",1100,"1 Hora"],
-["Lectora",1000,"2 Hrs"]
-],
-
-"PS4 Pro":[
-["Revisión / Diagnóstico",200,"1 a 2 días"],
-["Mantenimiento",900,"1 Hora"],
-["Disco 1TB",2000,"1 Hora"],
-["Disco 500GB",1600,"1 Hora"],
-["HDMI",1000,"1 Hora"],
-["Encoder",1100,"1 Hora"],
-["Lectora",1200,"2 Hrs"]
-],
-
-"PS5":[
-["Revisión / Diagnóstico",200,"1 a 2 días"],
-["Mantenimiento",1500,"1 Hora"],
-["SSD chipset",2400,"1 Hora"],
-["HDMI",1500,"1 Hora"],
-["Encoder",1500,"1 Hora"],
-["Fuente",1200,"2 Hrs"],
-["Cambio fuente",1800,"30 Min"],
-["Southbridge",2500,"3 Hrs"],
-["BIOS",2000,"3 Hrs"],
-["IC/Fusible",2000,"4 Hrs"]
-],
-
-"Nintendo Switch":[
-["Revisión / Diagnóstico",200,"1 a 2 días"],
-["Mantenimiento",500,"1 Hora"],
-["Puerto de Carga Type-C",700,"1 Hora"],
-["Chip de Video M92T36",900,"1 Hora"],
-["IC de Carga BQ24193",900,"1 Hora"],
-["Pantalla / Touch",1200,"2 Hrs"],
-["Lector de Juegos",600,"30 Min"],
-["Batería",600,"20 Min"]
-]
-
-};
-
-const imagenes = {
-"Xbox One":"xbox-one.png",
-"Xbox One S":"xbox-one-s.png",
-"Xbox Series S":"xbox-series-s.png",
-"Xbox Series X":"xbox-series-x.png",
-"PS4":"ps4.png",
-"PS4 Pro":"ps4-pro.png",
-"PS5":"ps5.png",
-"Nintendo Switch":"switch.png"
-}; 
-
-let c=document.getElementById("consola");
-let s=document.getElementById("servicio");
-
-Object.keys(data).forEach(x=>{
-let o=document.createElement("option");
-o.value=x;
-o.textContent=x;
-c.appendChild(o);
-});
-
-loadServices();
-renderReviews();
-
-function loadServices(){
-document.getElementById("consoleImg").src=imagenes[c.value]; 
-s.innerHTML="";
-data[c.value].forEach(x=>{
-let o=document.createElement("option");
-o.value=x[0];
-o.textContent=x[0];
-s.appendChild(o);
-});
-calc();
-}
-
-function calc(){
-let d=data[c.value].find(x=>x[0]===s.value);
-if(d){
-precio.innerText="$"+d[1];
-tiempo.innerText=d[2];
-total.innerText="$"+d[1];
-}
-}
-
-function sendWA(){
-let msg=`🎮 XE SERVICIO ELECTRÓNICO
-
-👤 ${cliente.value}
-🕹 ${c.value}
-🔧 ${s.value}
-
-💰 ${total.innerText}
-⏱ ${tiempo.innerText}
-
-📝 ${obs.value}`;
-
-window.open("https://wa.me/527471731852?text="+encodeURIComponent(msg));
-}
-
-function agendar(){
-let msg=`💳 XE SERVICIO ELECTRÓNICO
-
-📅 AGENDAR REPARACIÓN
-
-👤 ${cliente.value}
-🕹 ${c.value}
-🔧 ${s.value}
-
-💰 ${total.innerText}
-💳 Anticipo $200
-
-🏦 Banorte / MercadoPago
-Enviar comprobante`;
-
-window.open("https://wa.me/527471731852?text="+encodeURIComponent(msg));
-}
-
-function setRating(rating) {
-currentRating = rating;
-const stars = document.querySelectorAll('#starSelector span');
-stars.forEach((star, index) => {
-if(index < rating) {
-star.classList.add('active');
-} else {
-star.classList.remove('active');
-}
-});
-}
-
-function saveReview() {
-const nameInput = document.getElementById('revName');
-const textInput = document.getElementById('revText');
-
-if(!nameInput.value.trim() || currentRating === 0 || !textInput.value.trim()) {
-alert('Por favor completa todos los campos y selecciona tu calificación.');
-return;
-}
-
-const newReview = {
-name: nameInput.value.trim(),
-rating: currentRating,
-text: textInput.value.trim(),
-date: new Date().toLocaleDateString()
-};
-
-let reviews = JSON.parse(localStorage.getItem('xe_reviews')) || [];
-reviews.unshift(newReview);
-localStorage.setItem('xe_reviews', JSON.stringify(reviews));
-
-nameInput.value = '';
-textInput.value = '';
-setRating(0);
-
-renderReviews();
-}
-
-function renderReviews() {
-const feed = document.getElementById('reviewsFeed');
-let reviews = JSON.parse(localStorage.getItem('xe_reviews')) || [];
-
-if(reviews.length === 0) {
-feed.innerHTML = `<p style="color:#94a3b8; font-size:14px; text-align:center; margin-top:20px;">Aún no hay opiniones. ¡Sé el primero en calificar nuestro servicio!</p>`;
-return;
-}
-
-feed.innerHTML = '';
-reviews.forEach(r => {
-let starsHtml = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
-feed.innerHTML += `
-<div class="review-item">
-<div class="review-header">
-<span class="review-name">👤 ${r.name}</span>
-<span class="review-stars">${starsHtml}</span>
-</div>
-<p class="review-text">${r.text}</p>
-<div style="font-size:11px; color:#64748b; text-align:right;">${r.date}</div>
-</div>
-`;
-});
-}
-</script>
-
-</body>
-</html>
+    <div class="header-brand">
+        <img src="logo.png" class="logo-img" alt="Logo XE">
+        <h1 class="main-title">Centro de Soporte Técnico</h1>
+        <p class="main-subtitle">Cotiza y agenda la reparación de tu equipo al instante</p>
+    </div>
+
+    <div class="layout-grid">
+        
+        <div class="console-display-panel">
+            <div class="console-glow-frame">
+                <img id="consoleImg" src="xbox-one.png" alt="Consola">
+            </div>
+            
+            <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px;">
+                <a href="https://maps.app.goo.gl/x9gqptSPo6yqdxF1A" target="_blank" class="action-link-btn pay-btn" style="border-color: rgba(0, 242, 254, 0.2); color: var(--cyan-accent);">
+                    📍 UBICACIÓN EN GOOGLE MAPS
+                </a>
+                <a href="https://www.facebook.com/share/1BRU5UUK5c/" target="_blank" class="action-link-btn secondary-link">Facebook Oficial</a>
+                <a href="https://www.tiktok
+                  
