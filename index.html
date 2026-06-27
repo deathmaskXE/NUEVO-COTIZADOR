@@ -8,185 +8,268 @@
 <style>
 body{
 margin:0;
-font-family:'Segoe UI',Arial,sans-serif;
-background:radial-gradient(circle at top,#112244 0%,#050505 45%,#000 100%);
-background-attachment:fixed;
-color:white;
+font-family:'Segoe UI',Roboto,Arial,sans-serif;
+background:#0a0a0c; /* Negro Mate */
+color:#ffffff;
 padding:20px;
 overflow-x:hidden;
 }
 
 .container{
-max-width:1000px;
+max-width:800px;
 margin:auto;
 position:relative;
-padding:4px;
-border-radius:20px;
-}
-
-/* BORDE NEÓN */
-.container::before{
-content:"";
-position:absolute;
-inset:0;
-border-radius:20px;
-padding:2px;
-background:linear-gradient(90deg,#00ffff,#8a2be2,#00ffff,#8a2be2);
-background-size:300% 300%;
-animation:borderMove 4s linear infinite;
-mask:
-linear-gradient(#000 0 0) content-box,
-linear-gradient(#000 0 0);
-mask-composite:exclude;
--webkit-mask-composite:xor;
-pointer-events:none;
-}
-
-@keyframes borderMove{
-0%{background-position:0% 50%;}
-100%{background-position:100% 50%;}
+padding:20px 10px;
 }
 
 /* LOGO ÍCONO XE */
 .logo{
 text-align:center;
-padding:20px;
+padding:10px 0 30px 0;
 }
 
-.xe-icon{
-width:120px;
-height:120px;
-margin:auto;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:50%;
-font-size:42px;
-font-weight:bold;
-color:#00ffff;
-background:rgba(0,0,0,0.4);
-border:2px solid #00ffff;
-text-shadow:0 0 10px #00ffff, 0 0 25px #8a2be2;
-box-shadow:0 0 20px #00ffff, 0 0 40px #8a2be2;
-animation:xePulse 2s infinite ease-in-out;
+.logo-img{ 
+width:160px; 
+display:block; 
+margin:auto; 
+filter:drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+animation:logoFloat 4s ease-in-out infinite alternate; 
+} 
+
+@keyframes logoFloat{ 
+from{ transform:translateY(0); } 
+to{ transform:translateY(-8px); } 
+} 
+
+.subtitulo{ 
+margin-top:15px; 
+color:#8f9cae; 
+font-size: 16px;
+letter-spacing: 1px;
+margin-bottom:20px; 
+font-weight: 400;
+} 
+
+/* CONTENEDOR DE CONSOLA CON RESPLANDOR CIAN SUTIL */
+.console-box{ 
+display:flex; 
+justify-content:center; 
+margin:25px auto; 
+background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, rgba(0,0,0,0) 70%);
+padding: 20px;
+border-radius: 50%;
+width: 280px;
+height: 280px;
+align-items: center;
+box-shadow: 0 0 30px rgba(0, 242, 254, 0.08);
+transition: all 0.5s ease;
+} 
+
+.console-box img{ 
+width:230px; 
+max-width:100%; 
+transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+} 
+
+/* Al interactuar con la zona de la consola */
+.console-box:hover {
+box-shadow: 0 0 40px rgba(0, 242, 254, 0.18);
+background: radial-gradient(circle, rgba(0, 242, 254, 0.18) 0%, rgba(0,0,0,0) 70%);
 }
 
-@keyframes xePulse{
-0%,100%{
-transform:scale(1);
-box-shadow:0 0 15px #00ffff,0 0 30px #8a2be2;
-}
-50%{
-transform:scale(1.08);
-box-shadow:0 0 25px #00ffff,0 0 60px #8a2be2;
-}
+.console-box:hover img {
+transform: scale(1.05);
 }
 
-.neon{
-font-size:18px;
-letter-spacing:6px;
-text-transform:uppercase;
-color:white;
-margin-top:10px;
-animation:neonGlow 1.5s infinite alternate;
-}
-
-@keyframes neonGlow{
-from{text-shadow:0 0 5px #00ffff,0 0 10px #8a2be2;}
-to{text-shadow:0 0 20px #00ffff,0 0 35px #8a2be2;}
-}
-
-/* CARD PREMIUM */
+/* CARD PREMIUM (GLASSMORPHISM MATE) */
 .card{
-background:rgba(255,255,255,.06);
-backdrop-filter:blur(12px);
-border:1px solid rgba(0,255,255,.25);
-padding:20px;
-margin:20px 0;
-border-radius:22px;
-box-shadow:0 0 25px rgba(0,255,255,.15);
-transition:.3s;
+background: rgba(24, 24, 28, 0.75);
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+border: 1px solid rgba(255, 255, 255, 0.06);
+padding: 30px;
+margin: 25px 0;
+border-radius: 16px;
+box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-.card:hover{
-transform:translateY(-3px);
-box-shadow:0 0 35px cyan;
+/* FORMULARIOS */
+label {
+display: block;
+font-size: 13px;
+text-transform: uppercase;
+letter-spacing: 1.5px;
+color: #8f9cae;
+margin-top: 20px;
+margin-bottom: 6px;
+font-weight: 600;
 }
 
-/* INPUTS */
-select,input,textarea{
-width:100%;
-padding:10px;
-margin:8px 0;
-border-radius:10px;
-border:none;
-background:#111;
-color:white;
+select, input, textarea {
+width: 100%;
+padding: 14px;
+margin: 4px 0 12px 0;
+border-radius: 8px;
+border: 1px solid rgba(255, 255, 255, 0.08);
+background: #121214;
+color: #ffffff;
+font-size: 15px;
+box-sizing: border-box;
+transition: all 0.3s ease;
 }
 
-select:hover,
-input:hover,
-textarea:hover{
-border:1px solid cyan;
+select:hover, input:hover, textarea:hover {
+border-color: rgba(0, 242, 254, 0.4);
 }
 
-select:focus,
-input:focus,
-textarea:focus{
-outline:none;
-box-shadow:0 0 15px cyan;
+select:focus, input:focus, textarea:focus {
+outline: none;
+border-color: #00f2fe;
+background: #16161a;
+box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.15);
 }
 
-/* BOTONES */
-button{
-width:100%;
-padding:16px;
-border:none;
-border-radius:14px;
-font-weight:bold;
-font-size:16px;
-cursor:pointer;
-margin-top:12px;
-transition:.25s;
+/* BOTONES ESTILO PREMIUM */
+button {
+width: 100%;
+padding: 16px;
+border: none;
+border-radius: 8px;
+font-weight: 600;
+font-size: 15px;
+cursor: pointer;
+margin-top: 14px;
+transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+box-sizing: border-box;
 }
 
-button:hover{
-transform:scale(1.03);
+/* Azul Metálico a Cian */
+.wa {
+background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+color: white;
+box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
 }
 
-button:active{
-transform:scale(.98);
+.wa:hover {
+background: linear-gradient(135deg, #2a5298 0%, #3b6fc4 100%);
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(30, 60, 114, 0.45);
 }
 
-.wa{background:linear-gradient(90deg,#00ffff,#8a2be2);color:white;}
-.pay{background:linear-gradient(90deg,#8a2be2,#00ffff);color:white;}
-.clear{background:linear-gradient(90deg,#ff4e50,#f9d423);color:white;}
-.link{background:#111;border:1px solid #00ffff;color:#00ffff;}
-
-/* RESULTADOS PREMIUM */
-.result{
-background:#0b0f17;
-padding:18px;
-border-radius:18px;
-border:1px solid rgba(0,255,255,.25);
+/* Alternado Premium */
+.pay {
+background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+color: white;
+border: 1px solid rgba(0, 242, 254, 0.3);
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.total{
-font-size:28px;
-color:#00ffff;
+.pay:hover {
+border-color: #00f2fe;
+transform: translateY(-2px);
+box-shadow: 0 6px 20px rgba(0, 242, 254, 0.15);
 }
 
-/* PAGOS */
-.paybox{
-background:#0d0d0d;
-padding:15px;
-border-radius:15px;
-border:1px solid #00ffff;
-margin-top:15px;
+/* Links secundarios limpios */
+.link {
+background: transparent;
+border: 1px solid rgba(255, 255, 255, 0.15);
+color: #d1d5db;
 }
-.paybox h3{color:#00ffff;}
 
-.logo-img{ width:180px; display:block; margin:auto; filter:drop-shadow(0 0 20px cyan); animation:logoFloat 3s infinite alternate; } @keyframes logoFloat{ from{ transform:translateY(0); } to{ transform:translateY(-6px); } } .titulo{ margin-top:15px; font-size:30px; color:#00ffff; text-shadow:0 0 20px cyan; } .subtitulo{ margin-top:-10px; color:#bbbbbb; margin-bottom:20px; } .console-box{ display:flex; justify-content:center; margin:25px; } .console-box img{ width:320px; max-width:100%; transition:.35s; filter:drop-shadow(0 0 20px cyan); } 
+.link:hover {
+background: rgba(255, 255, 255, 0.05);
+border-color: #00f2fe;
+color: #00f2fe;
+transform: translateY(-2px);
+}
+
+button:active {
+transform: translateY(0);
+}
+
+/* RESULTADOS MÍNIMALISTAS */
+.result {
+background: #0e0e10;
+padding: 20px;
+border-radius: 10px;
+border: 1px solid rgba(255, 255, 255, 0.04);
+margin-top: 25px;
+margin-bottom: 10px;
+}
+
+.result span {
+font-weight: 600;
+color: #ffffff;
+}
+
+.total {
+font-size: 24px;
+font-weight: 700;
+color: #00f2fe !important; /* Acento Cian */
+margin-top: 12px;
+padding-top: 12px;
+border-top: 1px solid rgba(255, 255, 255, 0.08);
+letter-spacing: 0.5px;
+}
+
+.total span {
+color: #00f2fe !important;
+}
+
+/* SECCIÓN DE PAGOS */
+.paybox {
+background: rgba(20, 20, 22, 0.6);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.04);
+padding: 25px;
+border-radius: 16px;
+margin-top: 25px;
+}
+
+.paybox h3 {
+color: #00f2fe;
+font-size: 18px;
+margin-top: 0;
+margin-bottom: 20px;
+font-weight: 600;
+letter-spacing: 0.5px;
+}
+
+.paybox p {
+margin: 6px 0;
+color: #d1d5db;
+font-size: 15px;
+}
+
+.paybox p strong {
+color: #ffffff;
+}
+
+.paybox hr {
+border: 0;
+height: 1px;
+background: rgba(255, 255, 255, 0.08);
+margin: 20px 0;
+}
+
+/* RESPONSIVO */
+@media(max-width: 600px){
+body {
+padding: 10px;
+}
+.card {
+padding: 20px;
+}
+.console-box {
+width: 220px;
+height: 220px;
+}
+.console-box img {
+width: 170px;
+}
+}
 </style>
 </head>
 
@@ -194,7 +277,13 @@ margin-top:15px;
 
 <div class="container">
 
-<div class="logo"> <img src="logo.png" class="logo-img"> <h1 class="titulo"> XE Servicio Electrónico </h1> <p class="subtitulo"> Especialistas en reparación de consolas </p> <div class="console-box"> <img id="consoleImg" src="xbox-one.png"> </div> </div>
+<div class="logo"> 
+<img src="logo.png" class="logo-img"> 
+<p class="subtitulo">Especialistas en reparación de consolas</p> 
+<div class="console-box"> 
+<img id="consoleImg" src="xbox-one.png"> 
+</div> 
+</div>
 
 <div class="card">
 
@@ -205,20 +294,19 @@ margin-top:15px;
 <select id="servicio" onchange="calc()"></select>
 
 <label>Cliente</label>
-<input id="cliente">
+<input id="cliente" placeholder="Tu nombre">
 
 <label>Describe tu falla</label>
-<textarea id="obs"></textarea>
+<textarea id="obs" rows="3" placeholder="Detalles de la falla de tu consola..."></textarea>
 
 <div class="result">
-💰 Precio: <span id="precio">$0</span><br>
-⏱ Tiempo: <span id="tiempo">-</span><br>
+💰 Precio: <span id="precio">$0</span><br style="content: ''; margin-bottom: 6px; display: block;">
+⏱ Tiempo estimado: <span id="tiempo">-</span><br>
 <div class="total">TOTAL: <span id="total">$0</span></div>
 </div>
 
-<button class="wa" onclick="sendWA()">📲 WhatsApp</button>
-<button class="pay" onclick="agendar()">💳 Anticipo y agendar</button>
-<button class="clear" onclick="limpiarForm()">🗑 Limpiar Cotización</button>
+<button class="wa" onclick="sendWA()">📲 Enviar por WhatsApp</button>
+<button class="pay" onclick="agendar()">💳 Anticipo y agendar cita</button>
 
 <button class="link" onclick="window.open('https://deathmaskxe.github.io/CotizadorXE/')">
 🕹 Cotizador de Controles
@@ -232,20 +320,22 @@ margin-top:15px;
 
 <div class="paybox">
 
-<h3>💳 Datos de pago</h3>
+<h3>💳 Datos de depósito o transferencia</h3>
 
-<p>🏦 Banorte</p>
+<p>🏦 <strong>Banorte</strong></p>
 <p>4189 1400 1021 7767</p>
-<p>Irving Daniel Sánchez</p>
+<p style="color: #8f9cae; font-size: 13px;">Irving Daniel Sánchez</p>
 
 <hr>
 
-<p>💼 MercadoPago</p>
+<p>💼 <strong>MercadoPago</strong></p>
 <p>722969020089368829</p>
-<p>Irving Daniel Sánchez Nava</p>
+<p style="color: #8f9cae; font-size: 13px;">Irving Daniel Sánchez Nava</p>
 
-<p style="color:#00ffff;">
-Envía comprobante por WhatsApp para confirmar cita
+<hr>
+
+<p style="color:#00f2fe; font-weight: 500; font-size: 14px; text-align: center; margin-bottom: 0;">
+* Envía tu comprobante por WhatsApp para confirmar la cita
 </p>
 
 </div>
@@ -350,14 +440,6 @@ const data = {
 ["Southbridge",2500,"3 Hrs"],
 ["BIOS",2000,"3 Hrs"],
 ["IC/Fusible",2000,"4 Hrs"]
-],
-
-"Nintendo Switch":[
-["Revisión / Diagnóstico",200,"1 a 2 días"],
-["Mantenimiento",500,"1 Hora"],
-["Puerto de Carga",800,"1 Hora"],
-["Cambio de Pantalla",1500,"2 Hrs"],
-["Joy-Con Drift",250,"30 Min"]
 ]
 
 };
@@ -437,13 +519,6 @@ let msg=`💳 XE SERVICIO ELECTRÓNICO
 Enviar comprobante`;
 
 window.open("https://wa.me/527471731852?text="+encodeURIComponent(msg));
-}
-
-function limpiarForm(){
-document.getElementById("cliente").value = "";
-document.getElementById("obs").value = "";
-c.selectedIndex = 0;
-loadServices();
 }
 
 </script>
