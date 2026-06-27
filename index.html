@@ -3,32 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XE Servicio Electrónico - Soporte Premium</title>
+<title>XE Servicio Electrónico</title>
 
-<!-- Tipografía Premium -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-    --bg-main: #06070b;
-    --bg-card: rgba(13, 15, 22, 0.75);
-    --border-glass: rgba(255, 255, 255, 0.05);
-    --blue-metallic: #0072ff;
-    --cyan-accent: #00f2fe;
-    --text-primary: #e2e8f0;
-    --text-muted: #707e94;
-}
-
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle at top, #0b1528 0%, #06070b 60%);
-    background-attachment: fixed;
-    color: var(--text-primary);
-    padding: 0;
-    overflow-x: hidden;
+body{
+margin:0;
+font-family:'Poppins', 'Segoe UI', Arial, sans-serif;
+background: radial-gradient(circle at top, #0b1528 0%, #06070b 60%, #000000 100%);
+background-attachment:fixed;
+color:#e2e8f0; /* Blanco Platino */
+padding:20px;
+overflow-x:hidden;
 }
 
 /* BARRA SUPERIOR DE BENEFICIOS */
@@ -39,366 +28,343 @@ body {
     gap: 40px;
     background: rgba(6, 7, 11, 0.6);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-glass);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     padding: 14px 20px;
+    margin: -20px -20px 20px -20px;
 }
 
 .top-bar-item {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 12px;
+    font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    color: var(--text-muted);
+    color: #707e94;
     font-weight: 500;
 }
 
 .top-bar-item svg {
     width: 16px;
     height: 16px;
-    color: var(--cyan-accent);
+    color: #00f2fe;
 }
 
-/* CONTENEDOR PRINCIPAL */
-.container {
-    max-width: 1000px;
-    margin: auto;
-    padding: 40px 20px;
+.container{
+max-width:800px;
+margin:auto;
+position:relative;
+padding:4px;
+border-radius:20px;
 }
 
-/* ENCABEZADO MINIMALISTA (SOLO LOGO GRANDE) */
-.header-brand {
-    text-align: center;
-    margin-bottom: 40px;
-    padding-top: 20px;
+/* LOGO ÍCONO XE (SIN TÍTULOS Y CENTRADO) */
+.logo{
+text-align:center;
+padding: 20px 0;
 }
 
-.logo-img {
-    width: 190px;
-    height: auto;
-    filter: drop-shadow(0 6px 20px rgba(0, 114, 255, 0.3));
-    animation: floatLogo 4s ease-in-out infinite alternate;
+.logo-img{ 
+width:190px; 
+display:block; 
+margin:auto; 
+filter:drop-shadow(0 6px 20px rgba(0, 114, 255, 0.3)); 
+animation:logoFloat 4s ease-in-out infinite alternate; 
+} 
+
+@keyframes logoFloat{ 
+from{ transform:translateY(0); } 
+to{ transform:translateY(-8px); } 
+} 
+
+/* CONTENEDOR DE CONSOLA CON RESPLANDOR NEÓN AZUL/CIAN ÚNICAMENTE AQUÍ */
+.console-box{ 
+display:flex; 
+justify-content:center; 
+margin:25px auto; 
+background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, rgba(0,0,0,0) 70%);
+padding: 20px;
+border-radius: 24px;
+width: 320px;
+height: 320px;
+align-items: center;
+border: 1px solid rgba(0, 242, 254, 0.15);
+box-shadow: 0 0 35px rgba(0, 242, 254, 0.08);
+transition: all 0.5s ease;
+} 
+
+.console-box img{ 
+width:260px; 
+max-width:100%; 
+transition: all 0.35s ease; 
+filter:drop-shadow(0 15px 25px rgba(0,0,0,0.8)); 
+} 
+
+.console-box:hover {
+border-color: rgba(0, 242, 254, 0.3);
+box-shadow: 0 0 45px rgba(0, 242, 254, 0.15);
 }
 
-@keyframes floatLogo {
-    from { transform: translateY(0); }
-    to { transform: translateY(-8px); }
+/* CARD PREMIUM (GLASSMORPHISM MATE OSCURO) */
+.card, .paybox, .reviews-box{
+background: linear-gradient(135deg, rgba(20, 20, 25, 0.85) 0%, rgba(10, 10, 12, 0.95) 100%);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border: 1px solid rgba(255, 255, 255, 0.05);
+padding: 30px;
+margin: 25px 0;
+border-radius: 20px;
+box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
-/* DISEÑO DE DOS COLUMNAS */
-.layout-grid {
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 30px;
-    align-items: start;
-}
-
-/* CONTENEDOR DE LA IMAGEN DE CONSOLA */
-.console-display-panel {
-    background: var(--bg-card);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--border-glass);
-    border-radius: 24px;
-    padding: 30px;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-}
-
-.console-glow-frame {
-    margin: 10px auto 25px auto;
-    width: 100%;
-    max-width: 340px;
-    height: 340px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 24px;
-    background: radial-gradient(circle, rgba(0, 242, 254, 0.08) 0%, rgba(0,0,0,0) 70%);
-    border: 1px solid rgba(0, 242, 254, 0.15);
-    box-shadow: 0 0 30px rgba(0, 242, 254, 0.05);
-    position: relative;
-    transition: all 0.5s ease;
-}
-
-.console-glow-frame img {
-    max-width: 85%;
-    max-height: 85%;
-    object-fit: contain;
-    filter: drop-shadow(0 15px 30px rgba(0,0,0,0.7));
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.console-display-panel:hover .console-glow-frame {
-    border-color: rgba(0, 242, 254, 0.3);
-    box-shadow: 0 0 40px rgba(0, 242, 254, 0.12);
-}
-
-.console-display-panel:hover .console-glow-frame img {
-    transform: scale(1.04);
-}
-
-/* ELEMENTOS DE FORMULARIO */
-.form-group {
-    margin-bottom: 20px;
-}
-
+/* INPUTS Y LABELS PREMIUM */
 label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--cyan-accent);
-    margin-bottom: 8px;
-    font-weight: 600;
+display: block;
+font-size: 11px;
+text-transform: uppercase;
+letter-spacing: 1.5px;
+color: #00f2fe; /* Acento Cian en etiquetas */
+margin-top: 20px;
+margin-bottom: 8px;
+font-weight: 600;
 }
 
-select, input, textarea {
-    width: 100%;
-    padding: 14px 16px;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: #0d0f16;
-    color: #ffffff;
-    font-size: 14px;
-    font-family: inherit;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
+select,input,textarea{
+width:100%;
+padding: 14px 16px;
+margin: 4px 0 12px 0;
+border-radius:12px;
+border: 1px solid rgba(255, 255, 255, 0.08);
+background:#0d0f16;
+color:white;
+font-family: inherit;
+font-size: 14px;
+box-sizing: border-box;
+transition: all 0.3s ease;
 }
 
-select:hover, input:hover, textarea:hover {
-    border-color: rgba(0, 114, 255, 0.4);
+select:hover, input:hover, textarea:hover{
+border-color: rgba(0, 114, 255, 0.4);
 }
 
-select:focus, input:focus, textarea:focus {
-    outline: none;
-    border-color: var(--blue-metallic);
-    background: #121520;
-    box-shadow: 0 0 0 3px rgba(0, 114, 255, 0.15);
+select:focus, input:focus, textarea:focus{
+outline:none;
+border-color: #0072ff;
+background: #121520;
+box-shadow: 0 0 0 3px rgba(0, 114, 255, 0.15);
 }
 
-/* TARJETA DE PRECIO */
-.price-showcase-box {
-    background: linear-gradient(135deg, rgba(0, 114, 255, 0.1) 0%, rgba(0, 242, 254, 0.05) 100%);
-    border: 1px solid rgba(0, 242, 254, 0.2);
-    border-radius: 16px;
-    padding: 20px;
-    margin-top: 25px;
+/* BOTONES ELEVADOS Y MODERNOS */
+button, .btn-link-action {
+width:100%;
+padding:16px;
+border:none;
+border-radius:12px;
+font-weight:600;
+font-size:14px;
+font-family: inherit;
+cursor:pointer;
+margin-top:14px;
+transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+box-sizing: border-box;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+display: flex;
+align-items: center;
+justify-content: center;
+text-decoration: none;
 }
 
-.price-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
-    color: var(--text-muted);
-    margin-bottom: 10px;
+.wa {
+background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
+color: white;
 }
 
-.price-row span {
-    color: #ffffff;
-    font-weight: 500;
+.wa:hover {
+transform: translateY(-2px);
+box-shadow: 0 8px 25px rgba(0, 114, 255, 0.35);
 }
 
-.total-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 14px;
-    padding-top: 14px;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+.pay {
+background: #121520;
+color: white;
+border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.total-title {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #ffffff;
+.pay:hover {
+border-color: #00f2fe;
+background: #171b29;
+transform: translateY(-2px);
 }
 
-.total-amount {
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--cyan-accent);
+.link {
+background: transparent;
+border: 1px solid rgba(255, 255, 255, 0.06);
+color: #707e94;
 }
 
-/* BOTONES */
-button, .action-link-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    padding: 16px;
-    border: none;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 14px;
-    font-family: inherit;
-    cursor: pointer;
-    margin-top: 14px;
-    transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
-    box-sizing: border-box;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    text-decoration: none;
+.link:hover {
+border-color: rgba(255, 255, 255, 0.2);
+color: white;
+transform: translateY(-1px);
 }
 
-.wa-btn {
-    background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
-    color: white;
+/* BOTÓN DE UBICACIÓN DESTACADO EN CIAN */
+.btn-geo {
+background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+color: #00f2fe;
+border: 1px solid rgba(0, 242, 254, 0.2);
+}
+.btn-geo:hover {
+border-color: #00f2fe;
+box-shadow: 0 0 15px rgba(0, 242, 254, 0.15);
+transform: translateY(-2px);
 }
 
-.wa-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 114, 255, 0.4);
+/* GRID DE REDES SOCIALES ABAJO */
+.social-grid {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+gap: 10px;
+margin-top: 14px;
+}
+.social-grid .btn-link-action {
+margin-top: 0;
+padding: 12px;
+font-size: 12px;
 }
 
-.pay-btn {
-    background: #121520;
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+/* RESULTADOS INTERFAZ DE ALTA GAMA */
+.result{
+background: linear-gradient(135deg, rgba(0, 114, 255, 0.1) 0%, rgba(0, 242, 254, 0.05) 100%);
+border: 1px solid rgba(0, 242, 254, 0.2);
+padding: 20px;
+border-radius: 16px;
+margin-top: 25px;
+font-size: 14px;
 }
 
-.pay-btn:hover {
-    border-color: var(--cyan-accent);
-    background: #171b29;
-    transform: translateY(-2px);
+.result span {
+font-weight: 500;
+color: white;
 }
 
-.secondary-link {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.06);
-    color: var(--text-muted);
+.total{
+font-size: 32px;
+font-weight: 700;
+color: #00f2fe;
+margin-top: 14px;
+padding-top: 14px;
+border-top: 1px solid rgba(255, 255, 255, 0.08);
+display: flex;
+justify-content: space-between;
+align-items: center;
 }
 
-.secondary-link:hover {
-    border-color: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    transform: translateY(-1px);
+.total span {
+color: #00f2fe;
 }
 
-/* CARDS COMPLEMENTARIAS */
-.card-secondary {
-    background: var(--bg-card);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--border-glass);
-    padding: 30px;
-    border-radius: 24px;
-    margin-top: 30px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-}
-
-.section-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    color: #ffffff;
-    margin-top: 0;
-    margin-bottom: 20px;
+/* SECCIÓN DE PAGOS */
+.paybox h3, .reviews-box h3 {
+color: white;
+font-size: 15px;
+font-weight: 600;
+letter-spacing: 0.5px;
+margin-top: 0;
+margin-bottom: 20px;
+text-transform: uppercase;
 }
 
 .payment-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 20px;
 }
 
 .payment-method {
-    background: #0d0f16;
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    padding: 20px;
-    border-radius: 16px;
+background: #0d0f16;
+border: 1px solid rgba(255, 255, 255, 0.04);
+padding: 20px;
+border-radius: 16px;
 }
 
 .payment-method h4 {
-    margin: 0 0 8px 0;
-    color: var(--cyan-accent);
-    font-size: 14px;
+margin: 0 0 8px 0;
+color: #00f2fe;
+font-size: 14px;
 }
 
 .payment-method p {
-    margin: 4px 0;
-    font-size: 13px;
-    color: var(--text-muted);
+margin: 4px 0;
+font-size: 13px;
+color: #707e94;
 }
 
 .payment-method .account-number {
-    font-size: 15px;
-    color: #ffffff;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    margin: 8px 0;
+font-size: 15px;
+color: white;
+font-weight: 600;
+letter-spacing: 0.5px;
+margin: 8px 0;
 }
 
-/* CONFIGURACIÓN DE REDES SOCIALES EN FILA */
-.social-links-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-    margin-top: 12px;
+.paybox hr, .reviews-box hr {
+border: 0;
+height: 1px;
+background: rgba(255, 255, 255, 0.06);
+margin: 20px 0;
 }
 
-.social-links-row .action-link-btn {
-    margin-top: 0;
-    padding: 12px;
-    font-size: 12px;
-}
-
-/* COMENTARIOS */
+/* OPINIONES LOCALES */
 .star-rating-area {
-    display: flex;
-    gap: 6px;
-    margin: 12px 0;
+display: flex;
+gap: 6px;
+margin: 12px 0;
 }
 
 .star-rating-area span {
-    font-size: 24px;
-    cursor: pointer;
-    color: #1e293b;
+font-size: 24px;
+cursor: pointer;
+color: #1e293b;
 }
 
 .star-rating-area span.active, .star-rating-area span:hover {
-    color: #eab308;
+color: #eab308;
 }
 
 .reviews-scroll-container {
-    max-height: 220px;
-    overflow-y: auto;
-    margin-top: 20px;
+max-height: 220px;
+overflow-y: auto;
+margin-top: 20px;
 }
 
 .reviews-scroll-container::-webkit-scrollbar { width: 4px; }
 .reviews-scroll-container::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
 
 .single-review-card {
-    background: rgba(255,255,255,0.02);
-    padding: 16px;
-    border-radius: 12px;
-    margin-bottom: 12px;
-    border-left: 3px solid var(--blue-metallic);
+background: rgba(255,255,255,0.02);
+padding: 16px;
+border-radius: 12px;
+margin-bottom: 12px;
+border-left: 3px solid #0072ff;
 }
 
-@media(max-width: 900px) {
-    .layout-grid { grid-template-columns: 1fr; }
-    .top-bar { display: none; }
-    .social-links-row { grid-template-columns: 1fr; }
-    .payment-grid { grid-template-columns: 1fr; }
+/* RESPONSIVO */
+@media(max-width: 600px){
+body { padding: 10px; }
+.card, .paybox, .reviews-box { padding: 20px; }
+.console-box { width: 240px; height: 240px; }
+.console-box img { width: 190px; }
+.top-bar { display: none; }
+.social-grid { grid-template-columns: 1fr; }
+.payment-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- BARRA DE BENEFICIOS INICIAL -->
 <div class="top-bar">
     <div class="top-bar-item">
         <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -416,260 +382,342 @@ button, .action-link-btn {
 
 <div class="container">
 
-    <!-- CABECERA LIMPIA: SOLO LOGOTIPO GRANDE -->
-    <div class="header-brand">
-        <img src="logo.png" class="logo-img" alt="Logo XE">
-    </div>
+<div class="logo"> 
+    <img src="logo.png" class="logo-img"> 
+    <div class="console-box"> 
+        <img id="consoleImg" src="xbox-one.png"> 
+    </div> 
+</div>
 
-    <!-- RESTRUCTURACIÓN DEL VISOR Y COTIZADOR -->
-    <div class="layout-grid">
-        
-        <!-- PANEL IZQUIERDO: VISOR DE CONSOLAS Y DIRECCIONES -->
-        <div class="console-display-panel">
-            <div class="console-glow-frame">
-                <img id="consoleImg" src="xbox-one.png" alt="Consola">
-            </div>
-            
-            <a href="https://maps.app.goo.gl/x9gqptSPo6yqdxF1A" target="_blank" class="action-link-btn pay-btn" style="border-color: rgba(0, 242, 254, 0.3); color: var(--cyan-accent); margin-top: 0;">
-                📍 VER UBICACIÓN EN GOOGLE MAPS
-            </a>
-            
-            <div class="social-links-row">
-                <a href="https://www.facebook.com/share/1BRU5UUK5c/" target="_blank" class="action-link-btn secondary-link">Facebook</a>
-                <a href="https://www.tiktok.com/@xeservicioelectronico?_r=1&_t=ZS-97ZOLYTu5zU" target="_blank" class="action-link-btn secondary-link">TikTok</a>
-                <a href="https://youtube.com/@xeservicioelectronico?si=MDtE89WtQbayO_YN" target="_blank" class="action-link-btn secondary-link">YouTube</a>
-            </div>
-        </div>
+<div class="card">
 
-        <!-- PANEL DERECHO: FORMULARIO COMPLETO Y PRECIOS -->
-        <div class="card" style="background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border-glass); padding: 30px; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); margin:0;">
-            
-            <div class="form-group">
-                <label>Consola</label>
-                <select id="consola" onchange="loadServices()"></select>
-            </div>
+<label>Consola</label>
+<select id="consola" onchange="loadServices()"></select>
 
-            <div class="form-group">
-                <label>Servicio</label>
-                <select id="servicio" onchange="calc()"></select>
-            </div>
+<label>Servicio</label>
+<select id="servicio" onchange="calc()"></select>
 
-            <div class="form-group">
-                <label>Cliente</label>
-                <input id="cliente" placeholder="Tu nombre">
-            </div>
+<label>Cliente</label>
+<input id="cliente" placeholder="Tu nombre">
 
-            <div class="form-group">
-                <label>Describe tu falla</label>
-                <textarea id="obs" rows="3" placeholder="Detalles o problemas observados..."></textarea>
-            </div>
+<label>Describe tu falla</label>
+<textarea id="obs" rows="3" placeholder="Detalles de la falla de tu consola..."></textarea>
 
-            <!-- EXPOSICIÓN DEL TOTAL -->
-            <div class="price-showcase-box">
-                <div class="price-row">
-                    <span>💰 Precio:</span>
-                    <span id="precio">$0</span>
-                </div>
-                <div class="price-row">
-                    <span>⏱ Tiempo estimado:</span>
-                    <span id="tiempo">-</span>
-                </div>
-                <div class="total-row">
-                    <div class="total-title">TOTAL:</div>
-                    <div class="total-amount"><span id="total">$0</span></div>
-                </div>
-            </div>
+<div class="result">
+💰 Precio: <span id="precio">$0</span><br style="content: ''; margin-bottom: 6px; display: block;">
+⏱ Tiempo: <span id="tiempo">-</span><br>
+<div class="total">TOTAL: <span id="total">$0</span></div>
+</div>
 
-            <!-- TODOS LOS BOTONES DEL SISTEMA -->
-            <button class="wa-btn" onclick="sendWA()">📲 WhatsApp</button>
-            <button class="pay-btn" onclick="agendar()">💳 Anticipo y agendar</button>
+<button class="wa" onclick="sendWA()">📲 WhatsApp</button>
+<button class="pay" onclick="agendar()">💳 Anticipo y agendar</button>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
-                <button class="secondary-link" onclick="window.open('https://deathmaskxe.github.io/CotizadorXE/')">🕹 Cotizador de Controles</button>
-                <button class="secondary-link" onclick="window.open('https://deathmaskxe.github.io/Tester-de-funcionalidad-controles/')">🎮 Tester de Controles</button>
-            </div>
+<button class="link" onclick="window.open('https://deathmaskxe.github.io/CotizadorXE/')">
+🕹 Cotizador de Controles
+</button>
 
-        </div>
+<button class="link" onclick="window.open('https://deathmaskxe.github.io/Tester-de-funcionalidad-controles/')">
+🎮 Tester de Controles
+</button>
 
-    </div>
+<a href="https://maps.app.goo.gl/x9gqptSPo6yqdxF1A" target="_blank" class="btn-link-action btn-geo">📍 Ver nuestra ubicación en Google Maps</a>
 
-    <!-- SECCIÓN DE RESEÑAS -->
-    <div class="card-secondary reviews-box">
-        <h3 class="section-title">⭐ Opiniones de Clientes</h3>
-        <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 24px;">
-            <div>
-                <input id="revName" placeholder="Tu Nombre o Usuario" style="padding: 10px; font-size: 13px;">
-                <div class="star-rating-area" id="starSelector">
-                    <span onclick="setRating(1)">★</span>
-                    <span onclick="setRating(2)">★</span>
-                    <span onclick="setRating(3)">★</span>
-                    <span onclick="setRating(4)">★</span>
-                    <span onclick="setRating(5)">★</span>
-                </div>
-                <textarea id="revText" rows="2" placeholder="Escribe tu experiencia..." style="padding: 10px; font-size: 13px; margin-bottom: 8px;"></textarea>
-                <button class="pay-btn" onclick="saveReview()" style="padding: 10px; font-size: 12px; margin-top: 5px;">Publicar Opinión</button>
-            </div>
-            <div class="reviews-scroll-container" id="reviewsFeed"></div>
-        </div>
-    </div>
-
-    <!-- INFORMACIÓN DE DEPÓSITOS -->
-    <div class="card-secondary paybox">
-        <h3 class="section-title">💳 Datos de pago</h3>
-        <div class="payment-grid">
-            <div class="payment-method">
-                <h4>🏦 Banorte</h4>
-                <div class="account-number">4189 1400 1021 7767</div>
-                <p>Irving Daniel Sánchez</p>
-            </div>
-            <div class="payment-method">
-                <h4>💼 MercadoPago</h4>
-                <div class="account-number">722969020089368829</div>
-                <p>Irving Daniel Sánchez Nava</p>
-            </div>
-        </div>
-        <p style="color: var(--cyan-accent); font-size: 13px; text-align: center; margin-top: 20px; font-weight: 400; letter-spacing: 0.5px;">
-            Envía comprobante por WhatsApp para confirmar cita
-        </p>
-    </div>
+<div class="social-grid">
+    <a href="https://www.facebook.com/share/1BRU5UUK5c/" target="_blank" class="btn-link-action link">Facebook</a>
+    <a href="https://www.tiktok.com/@xeservicioelectronico?_r=1&_t=ZS-97ZOLYTu5zU" target="_blank" class="btn-link-action link">TikTok</a>
+    <a href="https://youtube.com/@xeservicioelectronico?si=MDtE89WtQbayO_YN" target="_blank" class="btn-link-action link">YouTube</a>
+</div>
 
 </div>
 
-<!-- COMPONENTE JAVASCRIPT ORIGINAL INTEGRO -->
+<div class="reviews-box">
+    <h3>⭐ Opiniones de Clientes</h3>
+    <div style="display: grid; grid-template-columns: 1fr 1.5fr; gap: 24px;">
+        <div>
+            <input id="revName" placeholder="Tu Nombre o Usuario" style="padding: 10px; font-size: 13px;">
+            <div class="star-rating-area" id="starSelector">
+                <span onclick="setRating(1)">★</span>
+                <span onclick="setRating(2)">★</span>
+                <span onclick="setRating(3)">★</span>
+                <span onclick="setRating(4)">★</span>
+                <span onclick="setRating(5)">★</span>
+            </div>
+            <textarea id="revText" rows="2" placeholder="Escribe tu experiencia..." style="padding: 10px; font-size: 13px; margin-bottom: 8px;"></textarea>
+            <button class="pay" onclick="saveReview()" style="padding: 10px; font-size: 12px; margin-top: 5px;">Publicar Opinión</button>
+        </div>
+        <div class="reviews-scroll-container" id="reviewsFeed"></div>
+    </div>
+</div>
+
+<div class="paybox">
+
+<h3>💳 Datos de pago</h3>
+
+<div class="payment-grid">
+    <div class="payment-method">
+        <h4>🏦 Banorte</h4>
+        <div class="account-number">4189 1400 1021 7767</div>
+        <p>Irving Daniel Sánchez</p>
+    </div>
+    <div class="payment-method">
+        <h4>💼 MercadoPago</h4>
+        <div class="account-number">722969020089368829</div>
+        <p>Irving Daniel Sánchez Nava</p>
+    </div>
+</div>
+
+<hr>
+
+<p style="color:#00f2fe; text-align: center; margin-bottom: 0; font-size: 14px; font-weight: 400;">
+Envía comprobante por WhatsApp para confirmar cita
+</p>
+
+</div>
+
+</div>
+
 <script>
 let currentRating = 0;
 
 const data = {
-    "Xbox One":[
-        ["Revisión / Diagnóstico",200,"1 a 2 días"],
-        ["Mantenimiento",600,"1 Hora"],
-        ["Cambio ventilador",400,"15 Min"],
-        ["Cambio módulo inalámbrico",400,"15 Min"],
-        ["Panel frontal",600,"15 Min"],
-        ["MOSFET",900,"1 Hora"],
-        ["Realtek",900,"40 Min"],
-        ["Filtros o ESD",900,"1 Hora"],
-        ["HDMI",900,"1 Hora"],
-        ["IC Power",1000,"1 Hora"]
-    ],
-    "Xbox One S":[
-        ["Revisión / Diagnóstico",200,"1 a 2 días"],
-        ["Mantenimiento",600,"1 Hora"],
-        ["Ventilador",500,"15 Min"],
-        ["Módulo inalámbrico",500,"15 Min"],
-        ["Panel frontal",600,"15 Min"],
-        ["MOSFET",1000,"1 Hora"],
-        ["Realtek",1000,"40 Min"],
-        ["Filtros",600,"1 Hora"],
-        ["ESD",1200,"1 Hora"],
-        ["HDMI",1000,"1 Hora"],
-        ["IC Power",1200,"1 Hora"],
-        ["Retimer",1000,"1 Hora"],
-        ["Carcasa",800,"30 Min"]
-    ],
-    "Xbox Series S":[
-        ["Revisión / Diagnóstico",200,"1 a 2 días"],
-        ["Mantenimiento",1200,"1 Hora"],
-        ["HDMI",1300,"1 Hora"],
-        ["Bluetooth",800,"10 Min"],
-        ["WiFi",900,"10 Min"],
-        ["Retimer",1500,"1 Hora"],
-        ["ESD",1800,"4 Hrs"],
-        ["SSD",2300,"2 Hrs"],
-        ["Ethernet",1200,"1 Hora"],
-        ["RAM/APU",2000,"2 Hrs"],
-        ["MOSFET",1500,"2 Hrs"],
-        ["Fuente",900,"3 Hrs"],
-        ["Cambio fuente",1200,"20 Min"],
-        ["Ventilador",1000,"10 Min"]
-    ],
-    "Xbox Series X":[
-        ["Revisión / Diagnóstico",200,"1 a 2 días"],
-        ["Mantenimiento",1500,"1 Hora"],
-        ["HDMI",1500,"1 Hora"],
-        ["Bluetooth",1000,"10 Min"],
-        ["WiFi",1000,"10 Min"],
-        ["Retimer",1800,"1 Hora"],
-        ["ESD",2200 hostage,"5 Hrs"],
-        ["SSD",5000,"2 Hrs"],
-        ["Ethernet",1500,"1 Hora"],
-        ["RAM/APU",2600,"2 Hrs"],
-        ["MOSFET",1800,"2 Hrs"],
-        ["Fuente",1200,"3 Hrs"],
-        ["Cambio fuente",1500,"20 Min"],
-        ["Ventilador",1400,"10 Min"]
-    ],
-    "PS4":[
-        ["Revisión / Diagnóstico",200,"1 a 2 días"],
-        ["Mantenimiento",700,"1 Hora"],
-        ["Disco 1TB",2000,"1 Hora"],
-        ["Disco 500GB",1600,"1 Hora"],
-        ["HDMI",1000,"1 Hora"],
-        ["Encoder",1100,"1 Hora"],
-        ["Lectora",1000,"2 Hrs"]
-    ],
-    "PS4 Pro":[
-        ["Revisión / Diagnóstico",200,"1 a 2 días"],
-        ["Mantenimiento",900,"1 Hora"],
-        ["Disco 1TB",2000,"1 Hora"],
-        ["Disco 500GB",1600,"1 Hora"],
-        ["HDMI",1000,"1 Hora"],
-        ["Encoder",1100,"1 Hora"],
-        ["Lectora",1200,"2 Hrs"]
-    ],
-    "PS5":[
-        ["Revisión / Diagnóstico",200,"1 a 2 días"],
-        ["Mantenimiento",1500,"1 Hora"],
-        ["SSD chipset",2400,"1 Hora"],
-        ["HDMI",1500,"1 Hora"],
-        ["Encoder",1500,"1 Hora"],
-        ["Fuente",1200,"2 Hrs"],
-        ["Cambio fuente",1800,"30 Min"],
-        ["Southbridge",2500,"3 Hrs"],
-        ["BIOS",2000,"3 Hrs"],
-        ["IC/Fusible",2000,"4 Hrs"]
-    ],
-    "Nintendo Switch":[
-        ["Revisión / Diagnóstico",200,"1 a 2 días"],
-        ["Mantenimiento",500,"1 Hora"],
-        ["Puerto de Carga Type-C",700,"1 Hora"],
-        ["Chip de Video M92T36",900,"1 Hora"],
-        ["IC de Carga BQ24193",900,"1 Hora"],
-        ["Pantalla / Touch",1200,"2 Hrs"],
-        ["Lector de Juegos",600,"30 Min"],
-        ["Batería",600,"20 Min"]
-    ]
+
+"Xbox One":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",600,"1 Hora"],
+["Cambio ventilador",400,"15 Min"],
+["Cambio módulo inalámbrico",400,"15 Min"],
+["Panel frontal",600,"15 Min"],
+["MOSFET",900,"1 Hora"],
+["Realtek",900,"40 Min"],
+["Filtros o ESD",900,"1 Hora"],
+["HDMI",900,"1 Hora"],
+["IC Power",1000,"1 Hora"]
+],
+
+"Xbox One S":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",600,"1 Hora"],
+["Ventilador",500,"15 Min"],
+["Módulo inalámbrico",500,"15 Min"],
+["Panel frontal",600,"15 Min"],
+["MOSFET",1000,"1 Hora"],
+["Realtek",1000,"40 Min"],
+["Filtros",600,"1 Hora"],
+["ESD",1200,"1 Hora"],
+["HDMI",1000,"1 Hora"],
+["IC Power",1200,"1 Hora"],
+["Retimer",1000,"1 Hora"],
+["Carcasa",800,"30 Min"]
+],
+
+"Xbox Series S":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",1200,"1 Hora"],
+["HDMI",1300,"1 Hora"],
+["Bluetooth",800,"10 Min"],
+["WiFi",900,"10 Min"],
+["Retimer",1500,"1 Hora"],
+["ESD",1800,"4 Hrs"],
+["SSD",2300,"2 Hrs"],
+["Ethernet",1200,"1 Hora"],
+["RAM/APU",2000,"2 Hrs"],
+["MOSFET",1500,"2 Hrs"],
+["Fuente",900,"3 Hrs"],
+["Cambio fuente",1200,"20 Min"],
+["Ventilador",1000,"10 Min"]
+],
+
+"Xbox Series X":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",1500,"1 Hora"],
+["HDMI",1500,"1 Hora"],
+["Bluetooth",1000,"10 Min"],
+["WiFi",1000,"10 Min"],
+["Retimer",1800,"1 Hora"],
+["ESD",2200,"5 Hrs"],
+["SSD",5000,"2 Hrs"],
+["Ethernet",1500,"1 Hora"],
+["RAM/APU",2600,"2 Hrs"],
+["MOSFET",1800,"2 Hrs"],
+["Fuente",1200,"3 Hrs"],
+["Cambio fuente",1500,"20 Min"],
+["Ventilador",1400,"10 Min"]
+],
+
+"PS4":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",700,"1 Hora"],
+["Disco 1TB",2000,"1 Hora"],
+["Disco 500GB",1600,"1 Hora"],
+["HDMI",1000,"1 Hora"],
+["Encoder",1100,"1 Hora"],
+["Lectora",1000,"2 Hrs"]
+],
+
+"PS4 Pro":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",900,"1 Hora"],
+["Disco 1TB",2000,"1 Hora"],
+["Disco 500GB",1600,"1 Hora"],
+["HDMI",1000,"1 Hora"],
+["Encoder",1100,"1 Hora"],
+["Lectora",1200,"2 Hrs"]
+],
+
+"PS5":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",1500,"1 Hora"],
+["SSD chipset",2400,"1 Hora"],
+["HDMI",1500,"1 Hora"],
+["Encoder",1500,"1 Hora"],
+["Fuente",1200,"2 Hrs"],
+["Cambio fuente",1800,"30 Min"],
+["Southbridge",2500,"3 Hrs"],
+["BIOS",2000,"3 Hrs"],
+["IC/Fusible",2000,"4 Hrs"]
+],
+
+"Nintendo Switch":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",500,"1 Hora"],
+["Puerto de Carga Type-C",700,"1 Hora"],
+["Chip de Video M92T36",900,"1 Hora"],
+["IC de Carga BQ24193",900,"1 Hora"],
+["Pantalla / Touch",1200,"2 Hrs"],
+["Lector de Juegos",600,"30 Min"],
+["Batería",600,"20 Min"]
+]
+
 };
 
 const imagenes = {
-    "Xbox One":"xbox-one.png",
-    "Xbox One S":"xbox-one-s.png",
-    "Xbox Series S":"xbox-series-s.png",
-    "Xbox Series X":"xbox-series-x.png",
-    "PS4":"ps4.png",
-    "PS4 Pro":"ps4-pro.png",
-    "PS5":"ps5.png",
-    "Nintendo Switch":"switch.png"
+"Xbox One":"xbox-one.png",
+"Xbox One S":"xbox-one-s.png",
+"Xbox Series S":"xbox-series-s.png",
+"Xbox Series X":"xbox-series-x.png",
+"PS4":"ps4.png",
+"PS4 Pro":"ps4-pro.png",
+"PS5":"ps5.png",
+"Nintendo Switch":"switch.png"
 }; 
 
-let c = document.getElementById("consola");
-let s = document.getElementById("servicio");
+let c=document.getElementById("consola");
+let s=document.getElementById("servicio");
 
-Object.keys(data).forEach(x => {
-    let o = document.createElement("option");
-    o.value = x;
-    o.textContent = x;
-    c.appendChild(o);
+Object.keys(data).forEach(x=>{
+let o=document.createElement("option");
+o.value=x;
+o.textContent=x;
+c.appendChild(o);
 });
 
 loadServices();
 renderReviews();
 
-function loadServices() {
-    const targetImg = document.getElementById("consoleImg");
-    targetImg.style.opacity = 0;
-    targetImg.style.transform = "scale(0.85)";
-    
-    setTimeout(() => {
-        targetImg.src = imagenes[c.value];
-        targetImg.st
+function loadServices(){
+// Transición interna controlada de imagen
+const targetImg = document.getElementById("consoleImg");
+targetImg.style.opacity = 0;
+targetImg.style.transform = "scale(0.9)";
+setTimeout(() => {
+    targetImg.src=imagenes[c.value]; 
+    targetImg.style.opacity = 1;
+    targetImg.style.transform = "scale(1)";
+}, 150);
+
+s.innerHTML="";
+data[c.value].forEach(x=>{
+let o=document.createElement("option");
+o.value=x[0];
+o.textContent=x[0];
+s.appendChild(o);
+});
+calc();
+}
+
+function calc(){
+let d=data[c.value].find(x=>x[0]===s.value);
+if(d){
+precio.innerText="$"+d[1];
+tiempo.innerText=d[2];
+total.innerText="$"+d[1];
+}
+}
+
+function sendWA(){
+let msg=`🎮 XE SERVICIO ELECTRÓNICO\n\n👤 ${cliente.value}\n🕹 ${c.value}\n🔧 ${s.value}\n\n💰 ${total.innerText}\n⏱ ${tiempo.innerText}\n\n📝 ${obs.value}`;
+window.open("https://wa.me/527471731852?text="+encodeURIComponent(msg));
+}
+
+function agendar(){
+let msg=`💳 XE SERVICIO ELECTRÓNICO\n\n📅 AGENDAR REPARACIÓN\n\n👤 ${cliente.value}\n🕹 ${c.value}\n🔧 ${s.value}\n\n💰 ${total.innerText}\n💳 Anticipo $200\n\n🏦 Banorte / MercadoPago\nEnviar comprobante`;
+window.open("https://wa.me/527471731852?text="+encodeURIComponent(msg));
+}
+
+function setRating(rating) {
+currentRating = rating;
+const stars = document.querySelectorAll('#starSelector span');
+stars.forEach((star, index) => {
+if(index < rating) {
+star.classList.add('active');
+} else {
+star.classList.remove('active');
+}
+});
+}
+
+function saveReview() {
+const nameInput = document.getElementById('revName');
+const textInput = document.getElementById('revText');
+
+if(!nameInput.value.trim() || currentRating === 0 || !textInput.value.trim()) {
+alert('Por favor completa todos los campos y selecciona tu calificación.');
+return;
+}
+
+const newReview = {
+name: nameInput.value.trim(),
+rating: currentRating,
+text: textInput.value.trim(),
+date: new Date().toLocaleDateString()
+};
+
+let reviews = JSON.parse(localStorage.getItem('xe_reviews')) || [];
+reviews.unshift(newReview);
+localStorage.setItem('xe_reviews', JSON.stringify(reviews));
+
+nameInput.value = '';
+textInput.value = '';
+setRating(0);
+
+renderReviews();
+}
+
+function renderReviews() {
+const feed = document.getElementById('reviewsFeed');
+let reviews = JSON.parse(localStorage.getItem('xe_reviews')) || [];
+
+if(reviews.length === 0) {
+feed.innerHTML = `<p style="color:#707e94; font-size:13px; text-align:center; margin-top:20px;">Aún no hay opiniones.</p>`;
+return;
+}
+
+feed.innerHTML = '';
+reviews.forEach(r => {
+let starsHtml = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+feed.innerHTML += `
+<div class="single-review-card">
+<div style="display:flex; justify-content:space-between; font-size:12px; color:#707e94; margin-bottom:6px;">
+<span style="font-weight:600; color:#fff;">👤 ${r.name}</span>
+<span style="color:#eab308;">${starsHtml}</span>
+</div>
+<p style="font-size:13px; color:#cbd5e1; margin:0; word-break:break-word;">${r.text}</p>
+<div style="font-size:10px; color:#475569; text-align:right; margin-top:4px;">${r.date}</div>
+</div>
+`;
+});
+}
+</script>
+
+</body>
+</html>
