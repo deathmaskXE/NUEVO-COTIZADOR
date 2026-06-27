@@ -9,8 +9,8 @@
 body{
 margin:0;
 font-family:'Segoe UI',Roboto,Arial,sans-serif;
-background:#0a0a0c; /* Negro Mate */
-color:#ffffff;
+background:#060608; /* Negro Absoluto Mate */
+color:#e2e8f0; /* Blanco Platino */
 padding:20px;
 overflow-x:hidden;
 }
@@ -32,7 +32,7 @@ padding:10px 0 30px 0;
 width:160px; 
 display:block; 
 margin:auto; 
-filter:drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+filter:drop-shadow(0 6px 15px rgba(0,0,0,0.7));
 animation:logoFloat 4s ease-in-out infinite alternate; 
 } 
 
@@ -43,11 +43,12 @@ to{ transform:translateY(-8px); }
 
 .subtitulo{ 
 margin-top:15px; 
-color:#8f9cae; 
-font-size: 16px;
-letter-spacing: 1px;
+color:#94a3b8; /* Gris Plata Atenuado */
+font-size: 15px;
+letter-spacing: 2px;
 margin-bottom:20px; 
 font-weight: 400;
+text-transform: uppercase;
 } 
 
 /* CONTENEDOR DE CONSOLA CON RESPLANDOR CIAN SUTIL */
@@ -55,13 +56,13 @@ font-weight: 400;
 display:flex; 
 justify-content:center; 
 margin:25px auto; 
-background: radial-gradient(circle, rgba(0, 242, 254, 0.12) 0%, rgba(0,0,0,0) 70%);
+background: radial-gradient(circle, rgba(0, 242, 254, 0.15) 0%, rgba(0,0,0,0) 70%);
 padding: 20px;
 border-radius: 50%;
 width: 280px;
 height: 280px;
 align-items: center;
-box-shadow: 0 0 30px rgba(0, 242, 254, 0.08);
+box-shadow: 0 0 40px rgba(0, 242, 254, 0.08);
 transition: all 0.5s ease;
 } 
 
@@ -69,38 +70,37 @@ transition: all 0.5s ease;
 width:230px; 
 max-width:100%; 
 transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+filter: drop-shadow(0 15px 25px rgba(0,0,0,0.8));
 } 
 
-/* Al interactuar con la zona de la consola */
 .console-box:hover {
-box-shadow: 0 0 40px rgba(0, 242, 254, 0.18);
-background: radial-gradient(circle, rgba(0, 242, 254, 0.18) 0%, rgba(0,0,0,0) 70%);
+box-shadow: 0 0 50px rgba(0, 242, 254, 0.22);
+background: radial-gradient(circle, rgba(0, 242, 254, 0.22) 0%, rgba(0,0,0,0) 70%);
 }
 
 .console-box:hover img {
-transform: scale(1.05);
+transform: scale(1.06);
 }
 
-/* CARD PREMIUM (GLASSMORPHISM MATE) */
+/* CARD PREMIUM (GLASSMORPHISM NEGRO METÁLICO) */
 .card{
-background: rgba(24, 24, 28, 0.75);
-backdrop-filter: blur(16px);
--webkit-backdrop-filter: blur(16px);
-border: 1px solid rgba(255, 255, 255, 0.06);
+background: linear-gradient(135deg, rgba(20, 20, 25, 0.9) 0%, rgba(10, 10, 12, 0.95) 100%);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border: 1px solid rgba(212, 175, 55, 0.12); /* Borde sutil Oro */
 padding: 30px;
 margin: 25px 0;
-border-radius: 16px;
-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+border-radius: 18px;
+box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
 }
 
 /* FORMULARIOS */
 label {
 display: block;
-font-size: 13px;
+font-size: 12px;
 text-transform: uppercase;
-letter-spacing: 1.5px;
-color: #8f9cae;
+letter-spacing: 2px;
+color: #d4af37; /* Oro Premium para Etiquetas */
 margin-top: 20px;
 margin-bottom: 6px;
 font-weight: 600;
@@ -112,25 +112,25 @@ padding: 14px;
 margin: 4px 0 12px 0;
 border-radius: 8px;
 border: 1px solid rgba(255, 255, 255, 0.08);
-background: #121214;
-color: #ffffff;
+background: #111114; /* Negro Metálico */
+color: #f1f5f9; /* Blanco Plata */
 font-size: 15px;
 box-sizing: border-box;
 transition: all 0.3s ease;
 }
 
 select:hover, input:hover, textarea:hover {
-border-color: rgba(0, 242, 254, 0.4);
+border-color: rgba(214, 219, 225, 0.3); /* Plata */
 }
 
 select:focus, input:focus, textarea:focus {
 outline: none;
-border-color: #00f2fe;
-background: #16161a;
-box-shadow: 0 0 0 3px rgba(0, 242, 254, 0.15);
+border-color: #d4af37; /* Foco en Oro */
+background: #141419;
+box-shadow: 0 0 0 3px rgba(214, 175, 55, 0.15);
 }
 
-/* BOTONES ESTILO PREMIUM */
+/* BOTONES ESTILO LUJO */
 button {
 width: 100%;
 padding: 16px;
@@ -142,46 +142,48 @@ cursor: pointer;
 margin-top: 14px;
 transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 box-sizing: border-box;
+text-transform: uppercase;
+letter-spacing: 1px;
 }
 
-/* Azul Metálico a Cian */
+/* Oro Líquido / Metálico */
 .wa {
-background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-color: white;
-box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+background: linear-gradient(135deg, #c5a028 0%, #9a7b1c 100%);
+color: #000000; /* Texto negro para contraste elegante */
+box-shadow: 0 4px 15px rgba(154, 123, 28, 0.25);
 }
 
 .wa:hover {
-background: linear-gradient(135deg, #2a5298 0%, #3b6fc4 100%);
+background: linear-gradient(135deg, #d4af37 0%, #b28d22 100%);
 transform: translateY(-2px);
-box-shadow: 0 6px 20px rgba(30, 60, 114, 0.45);
+box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
 
-/* Alternado Premium */
+/* Negro Metálico Pulido */
 .pay {
-background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-color: white;
-border: 1px solid rgba(0, 242, 254, 0.3);
-box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+background: linear-gradient(135deg, #1e1e24 0%, #111115 100%);
+color: #e2e8f0; /* Texto Plata */
+border: 1px solid rgba(255, 255, 255, 0.15);
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .pay:hover {
-border-color: #00f2fe;
+border-color: #ffffff;
+background: linear-gradient(135deg, #25252c 0%, #16161c 100%);
 transform: translateY(-2px);
-box-shadow: 0 6px 20px rgba(0, 242, 254, 0.15);
 }
 
-/* Links secundarios limpios */
+/* Links secundarios en Plata Platino */
 .link {
 background: transparent;
-border: 1px solid rgba(255, 255, 255, 0.15);
-color: #d1d5db;
+border: 1px solid rgba(255, 255, 255, 0.1);
+color: #94a3b8;
 }
 
 .link:hover {
-background: rgba(255, 255, 255, 0.05);
-border-color: #00f2fe;
-color: #00f2fe;
+background: rgba(255, 255, 255, 0.03);
+border-color: #d4af37; /* Cambio sutil a oro al pasar el cursor */
+color: #ffffff;
 transform: translateY(-2px);
 }
 
@@ -191,10 +193,10 @@ transform: translateY(0);
 
 /* RESULTADOS MÍNIMALISTAS */
 .result {
-background: #0e0e10;
+background: #09090b;
 padding: 20px;
 border-radius: 10px;
-border: 1px solid rgba(255, 255, 255, 0.04);
+border: 1px solid rgba(255, 255, 255, 0.03);
 margin-top: 25px;
 margin-bottom: 10px;
 }
@@ -207,10 +209,10 @@ color: #ffffff;
 .total {
 font-size: 24px;
 font-weight: 700;
-color: #00f2fe !important; /* Acento Cian */
+color: #00f2fe !important; /* Acento Cian estrictamente aquí */
 margin-top: 12px;
 padding-top: 12px;
-border-top: 1px solid rgba(255, 255, 255, 0.08);
+border-top: 1px solid rgba(255, 255, 255, 0.06);
 letter-spacing: 0.5px;
 }
 
@@ -220,37 +222,39 @@ color: #00f2fe !important;
 
 /* SECCIÓN DE PAGOS */
 .paybox {
-background: rgba(20, 20, 22, 0.6);
+background: rgba(15, 15, 18, 0.8);
 backdrop-filter: blur(10px);
-border: 1px solid rgba(255, 255, 255, 0.04);
+border: 1px solid rgba(212, 175, 55, 0.08);
 padding: 25px;
 border-radius: 16px;
 margin-top: 25px;
 }
 
 .paybox h3 {
-color: #00f2fe;
-font-size: 18px;
+color: #d4af37; /* Oro */
+font-size: 16px;
 margin-top: 0;
 margin-bottom: 20px;
 font-weight: 600;
-letter-spacing: 0.5px;
+letter-spacing: 1.5px;
+text-transform: uppercase;
 }
 
 .paybox p {
 margin: 6px 0;
-color: #d1d5db;
+color: #cbd5e1; /* Plata */
 font-size: 15px;
 }
 
 .paybox p strong {
 color: #ffffff;
+font-weight: 600;
 }
 
 .paybox hr {
 border: 0;
 height: 1px;
-background: rgba(255, 255, 255, 0.08);
+background: rgba(255, 255, 255, 0.06);
 margin: 20px 0;
 }
 
@@ -323,14 +327,14 @@ width: 170px;
 <h3>💳 Datos de depósito o transferencia</h3>
 
 <p>🏦 <strong>Banorte</strong></p>
-<p>4189 1400 1021 7767</p>
-<p style="color: #8f9cae; font-size: 13px;">Irving Daniel Sánchez</p>
+<p style="letter-spacing: 1px;">4189 1400 1021 7767</p>
+<p style="color: #94a3b8; font-size: 13px;">Irving Daniel Sánchez</p>
 
 <hr>
 
 <p>💼 <strong>MercadoPago</strong></p>
-<p>722969020089368829</p>
-<p style="color: #8f9cae; font-size: 13px;">Irving Daniel Sánchez Nava</p>
+<p style="letter-spacing: 1px;">722969020089368829</p>
+<p style="color: #94a3b8; font-size: 13px;">Irving Daniel Sánchez Nava</p>
 
 <hr>
 
@@ -440,6 +444,17 @@ const data = {
 ["Southbridge",2500,"3 Hrs"],
 ["BIOS",2000,"3 Hrs"],
 ["IC/Fusible",2000,"4 Hrs"]
+],
+
+"Nintendo Switch":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",500,"1 Hora"],
+["Puerto de Carga Type-C",700,"1 Hora"],
+["Chip de Video M92T36",900,"1 Hora"],
+["IC de Carga BQ24193",900,"1 Hora"],
+["Pantalla / Touch",1200,"2 Hrs"],
+["Lector de Juegos",600,"30 Min"],
+["Batería",600,"20 Min"]
 ]
 
 };
@@ -520,8 +535,4 @@ Enviar comprobante`;
 
 window.open("https://wa.me/527471731852?text="+encodeURIComponent(msg));
 }
-
-</script>
-
-</body>
-</html>
+  
