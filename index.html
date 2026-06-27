@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XE Servicio Electrónico</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#050505;
+color:white;
+padding:20px;
+}
+
+.container{
+max-width:1000px;
+margin:auto;
+position:relative;
+padding:4px;
+border-radius:20px;
+}
+
+/* BORDE NEÓN */
+.container::before{
+content:"";
+position:absolute;
+inset:0;
+border-radius:20px;
+padding:2px;
+background:linear-gradient(90deg,#00ffff,#8a2be2,#00ffff,#8a2be2);
+background-size:300% 300%;
+animation:borderMove 4s linear infinite;
+mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
+mask-composite:exclude;
+-webkit-mask-composite:xor;
+pointer-events:none;
+}
+
+@keyframes borderMove{
+0%{background-position:0% 50%;}
+100%{background-position:100% 50%;}
+}
+
+/* LOGO ÍCONO XE */
+.logo{
+text-align:center;
+padding:20px;
+}
+
+.xe-icon{
+width:120px;
+height:120px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-size:42px;
+font-weight:bold;
+color:#00ffff;
+background:rgba(0,0,0,0.4);
+border:2px solid #00ffff;
+text-shadow:0 0 10px #00ffff, 0 0 25px #8a2be2;
+box-shadow:0 0 20px #00ffff, 0 0 40px #8a2be2;
+animation:xePulse 2s infinite ease-in-out;
+}
+
+@keyframes xePulse{
+0%,100%{
+transform:scale(1);
+box-shadow:0 0 15px #00ffff,0 0 30px #8a2be2;
+}
+50%{
+transform:scale(1.08);
+box-shadow:0 0 25px #00ffff,0 0 60px #8a2be2;
+}
+}
+
+.neon{
+font-size:18px;
+letter-spacing:6px;
+text-transform:uppercase;
+color:white;
+margin-top:10px;
+animation:neonGlow 1.5s infinite alternate;
+}
+
+@keyframes neonGlow{
+from{text-shadow:0 0 5px #00ffff,0 0 10px #8a2be2;}
+to{text-shadow:0 0 20px #00ffff,0 0 35px #8a2be2;}
+}
+
+/* CARD */
+.card{
+background:rgba(255,255,255,0.05);
+padding:15px;
+margin:15px 0;
+border-radius:15px;
+}
+
+/* INPUTS */
+select,input,textarea{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:10px;
+border:none;
+background:#111;
+color:white;
+}
+
+/* BOTONES */
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+font-weight:bold;
+cursor:pointer;
+margin-top:10px;
+}
+
+.wa{background:linear-gradient(90deg,#00ffff,#8a2be2);color:white;}
+.pay{background:linear-gradient(90deg,#8a2be2,#00ffff);color:white;}
+.link{background:#111;border:1px solid #00ffff;color:#00ffff;}
+
+/* RESULTADOS */
+.result{
+background:#0d0d0d;
+padding:10px;
+border-radius:10px;
+}
+
+.total{
+font-size:28px;
+color:#00ffff;
+}
+
+/* PAGOS */
+.paybox{
+background:#0d0d0d;
+padding:15px;
+border-radius:15px;
+border:1px solid #00ffff;
+margin-top:15px;
+}
+.paybox h3{color:#00ffff;}
+
+.logo-img{ width:180px; display:block; margin:auto; filter:drop-shadow(0 0 20px cyan); animation:logoFloat 3s infinite alternate; } @keyframes logoFloat{ from{ transform:translateY(0); } to{ transform:translateY(-6px); } } .titulo{ margin-top:15px; font-size:30px; color:#00ffff; text-shadow:0 0 20px cyan; } .subtitulo{ margin-top:-10px; color:#bbbbbb; margin-bottom:20px; } .console-box{ display:flex; justify-content:center; margin:25px; } .console-box img{ width:320px; max-width:100%; transition:.35s; filter:drop-shadow(0 0 20px cyan); } 
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo"> <img src="imagenes/logo.png" class="logo-img"> <h1 class="titulo"> XE Servicio Electrónico </h1> <p class="subtitulo"> Especialistas en reparación de consolas </p> <div class="console-box"> <img id="consoleImg" src="imagenes/xbox-series-x.png"> </div> </div>
+
+<div class="card">
+
+<label>Consola</label>
+<select id="consola" onchange="loadServices()"></select>
+
+<label>Servicio</label>
+<select id="servicio" onchange="calc()"></select>
+
+<label>Cliente</label>
+<input id="cliente">
+
+<label>Describe tu falla</label>
+<textarea id="obs"></textarea>
+
+<div class="result">
+💰 Precio: <span id="precio">$0</span><br>
+⏱ Tiempo: <span id="tiempo">-</span><br>
+<div class="total">TOTAL: <span id="total">$0</span></div>
+</div>
+
+<button class="wa" onclick="sendWA()">📲 WhatsApp</button>
+<button class="pay" onclick="agendar()">💳 Anticipo y agendar</button>
+
+<button class="link" onclick="window.open('https://deathmaskxe.github.io/CotizadorXE/')">
+🕹 Cotizador de Controles
+</button>
+
+<button class="link" onclick="window.open('https://deathmaskxe.github.io/Tester-de-funcionalidad-controles/')">
+🎮 Tester de Controles
+</button>
+
+</div>
+
+<div class="paybox">
+
+<h3>💳 Datos de pago</h3>
+
+<p>🏦 Banorte</p>
+<p>4189 1400 1021 7767</p>
+<p>Irving Daniel Sánchez</p>
+
+<hr>
+
+<p>💼 MercadoPago</p>
+<p>722969020089368829</p>
+<p>Irving Daniel Sánchez Nava</p>
+
+<p style="color:#00ffff;">
+Envía comprobante por WhatsApp para confirmar cita
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+const data = {
+
+"Xbox One":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",600,"1 Hora"],
+["Cambio ventilador",400,"15 Min"],
+["Cambio módulo inalámbrico",400,"15 Min"],
+["Panel frontal",600,"15 Min"],
+["MOSFET",900,"1 Hora"],
+["Realtek",900,"40 Min"],
+["Filtros o ESD",900,"1 Hora"],
+["HDMI",900,"1 Hora"],
+["IC Power",1000,"1 Hora"]
+],
+
+"Xbox One S":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",600,"1 Hora"],
+["Ventilador",500,"15 Min"],
+["Módulo inalámbrico",500,"15 Min"],
+["Panel frontal",600,"15 Min"],
+["MOSFET",1000,"1 Hora"],
+["Realtek",1000,"40 Min"],
+["Filtros",600,"1 Hora"],
+["ESD",1200,"1 Hora"],
+["HDMI",1000,"1 Hora"],
+["IC Power",1200,"1 Hora"],
+["Retimer",1000,"1 Hora"],
+["Carcasa",800,"30 Min"]
+],
+
+"Xbox Series S":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",1200,"1 Hora"],
+["HDMI",1300,"1 Hora"],
+["Bluetooth",800,"10 Min"],
+["WiFi",900,"10 Min"],
+["Retimer",1500,"1 Hora"],
+["ESD",1800,"4 Hrs"],
+["SSD",2300,"2 Hrs"],
+["Ethernet",1200,"1 Hora"],
+["RAM/APU",2000,"2 Hrs"],
+["MOSFET",1500,"2 Hrs"],
+["Fuente",900,"3 Hrs"],
+["Cambio fuente",1200,"20 Min"],
+["Ventilador",1000,"10 Min"]
+],
+
+"Xbox Series X":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",1500,"1 Hora"],
+["HDMI",1500,"1 Hora"],
+["Bluetooth",1000,"10 Min"],
+["WiFi",1000,"10 Min"],
+["Retimer",1800,"1 Hora"],
+["ESD",2200,"5 Hrs"],
+["SSD",5000,"2 Hrs"],
+["Ethernet",1500,"1 Hora"],
+["RAM/APU",2600,"2 Hrs"],
+["MOSFET",1800,"2 Hrs"],
+["Fuente",1200,"3 Hrs"],
+["Cambio fuente",1500,"20 Min"],
+["Ventilador",1400,"10 Min"]
+],
+
+"PS4":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",700,"1 Hora"],
+["Disco 1TB",2000,"1 Hora"],
+["Disco 500GB",1600,"1 Hora"],
+["HDMI",1000,"1 Hora"],
+["Encoder",1100,"1 Hora"],
+["Lectora",1000,"2 Hrs"]
+],
+
+"PS4 Pro":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",900,"1 Hora"],
+["Disco 1TB",2000,"1 Hora"],
+["Disco 500GB",1600,"1 Hora"],
+["HDMI",1000,"1 Hora"],
+["Encoder",1100,"1 Hora"],
+["Lectora",1200,"2 Hrs"]
+],
+
+"PS5":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",1500,"1 Hora"],
+["SSD chipset",2400,"1 Hora"],
+["HDMI",1500,"1 Hora"],
+["Encoder",1500,"1 Hora"],
+["Fuente",1200,"2 Hrs"],
+["Cambio fuente",1800,"30 Min"],
+["Southbridge",2500,"3 Hrs"],
+["BIOS",2000,"3 Hrs"],
+["IC/Fusible",2000,"4 Hrs"]
+]
+
+};
+
+const imagenes={ "Xbox One":"imagenes/xbox-one.png", "Xbox One S":"imagenes/xbox-one-s.png", "Xbox Series S":"imagenes/xbox-series-s.png", "Xbox Series X":"imagenes/xbox-series-x.png", "PS4":"imagenes/ps4.png", "PS4 Pro":"imagenes/ps4-pro.png", "PS5":"imagenes/ps5.png" }; 
+
+let c=document.getElementById("consola");
+let s=document.getElementById("servicio");
+
+Object.keys(data).forEach(x=>{
+let o=document.createElement("option");
+o.value=x;
+o.textContent=x;
+c.appendChild(o);
+});
+
+loadServices();
+
+function loadServices(){
+document.getElementById("consoleImg").src=imagenes[c.value]; 
+s.innerHTML="";
+data[c.value].forEach(x=>{
+let o=document.createElement("option");
+o.value=x[0];
+o.textContent=x[0];
+s.appendChild(o);
+});
+calc();
+}
+
+function calc(){
+let d=data[c.value].find(x=>x[0]===s.value);
+if(d){
+precio.innerText="$"+d[1];
+tiempo.innerText=d[2];
+total.innerText="$"+d[1];
+}
+}
+
+function sendWA(){
+let msg=`🎮 XE SERVICIO ELECTRÓNICO
+
+👤 ${cliente.value}
+🕹 ${c.value}
+🔧 ${s.value}
+
+💰 ${total.innerText}
+⏱ ${tiempo.innerText}
+
+📝 ${obs.value}`;
+
+window.open("https://wa.me/527471731852?text="+encodeURIComponent(msg));
+}
+
+function agendar(){
+let msg=`💳 XE SERVICIO ELECTRÓNICO
+
+📅 AGENDAR REPARACIÓN
+
+👤 ${cliente.value}
+🕹 ${c.value}
+🔧 ${s.value}
+
+💰 ${total.innerText}
+💳 Anticipo $200
+
+🏦 Banorte / MercadoPago
+Enviar comprobante`;
+
+window.open("https://wa.me/527471731852?text="+encodeURIComponent(msg));
+}
+
+</script>
+
+</body>
+</html>
