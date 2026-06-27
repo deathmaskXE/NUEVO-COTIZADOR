@@ -43,7 +43,7 @@ to{ transform:translateY(-8px); }
 
 .subtitulo{ 
 margin-top:15px; 
-color:#94a3b8; /* Gris Plata Atenuado */
+color:#94a3b8; /* Gris Plata */
 font-size: 15px;
 letter-spacing: 2px;
 margin-bottom:20px; 
@@ -51,7 +51,7 @@ font-weight: 400;
 text-transform: uppercase;
 } 
 
-/* CONTENEDOR DE CONSOLA CON RESPLANDOR CIAN SUTIL */
+/* CONTENEDOR DE CONSOLA */
 .console-box{ 
 display:flex; 
 justify-content:center; 
@@ -82,12 +82,12 @@ background: radial-gradient(circle, rgba(0, 242, 254, 0.22) 0%, rgba(0,0,0,0) 70
 transform: scale(1.06);
 }
 
-/* CARD PREMIUM (GLASSMORPHISM NEGRO METÁLICO) */
-.card{
+/* CARDS PREMIUM (GLASSMORPHISM NEGRO METÁLICO) */
+.card, .paybox, .reviews-box{
 background: linear-gradient(135deg, rgba(20, 20, 25, 0.9) 0%, rgba(10, 10, 12, 0.95) 100%);
 backdrop-filter: blur(20px);
 -webkit-backdrop-filter: blur(20px);
-border: 1px solid rgba(212, 175, 55, 0.12); /* Borde sutil Oro */
+border: 1px solid rgba(30, 66, 159, 0.2); /* Borde Azul Metálico sutil */
 padding: 30px;
 margin: 25px 0;
 border-radius: 18px;
@@ -100,7 +100,7 @@ display: block;
 font-size: 12px;
 text-transform: uppercase;
 letter-spacing: 2px;
-color: #d4af37; /* Oro Premium para Etiquetas */
+color: #3b82f6; /* Azul Metálico Claro para Etiquetas */
 margin-top: 20px;
 margin-bottom: 6px;
 font-weight: 600;
@@ -112,26 +112,27 @@ padding: 14px;
 margin: 4px 0 12px 0;
 border-radius: 8px;
 border: 1px solid rgba(255, 255, 255, 0.08);
-background: #111114; /* Negro Metálico */
-color: #f1f5f9; /* Blanco Plata */
+background: #111114;
+color: #f1f5f9;
 font-size: 15px;
 box-sizing: border-box;
 transition: all 0.3s ease;
 }
 
 select:hover, input:hover, textarea:hover {
-border-color: rgba(214, 219, 225, 0.3); /* Plata */
+border-color: rgba(30, 66, 159, 0.5);
 }
 
 select:focus, input:focus, textarea:focus {
 outline: none;
-border-color: #d4af37; /* Foco en Oro */
+border-color: #3b82f6; /* Foco Azul Metálico */
 background: #141419;
-box-shadow: 0 0 0 3px rgba(214, 175, 55, 0.15);
+box-shadow: 0 0 0 3px rgba(30, 66, 159, 0.25);
 }
 
 /* BOTONES ESTILO LUJO */
-button {
+button, .btn-link {
+display: block;
 width: 100%;
 padding: 16px;
 border: none;
@@ -144,31 +145,33 @@ transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 box-sizing: border-box;
 text-transform: uppercase;
 letter-spacing: 1px;
+text-align: center;
+text-decoration: none;
 }
 
-/* Oro Líquido / Metálico */
+/* Azul Metálico Sólido */
 .wa {
-background: linear-gradient(135deg, #c5a028 0%, #9a7b1c 100%);
-color: #000000; /* Texto negro para contraste elegante */
-box-shadow: 0 4px 15px rgba(154, 123, 28, 0.25);
+background: linear-gradient(135deg, #1e429f 0%, #1a3675 100%);
+color: #ffffff;
+box-shadow: 0 4px 15px rgba(30, 66, 159, 0.3);
 }
 
 .wa:hover {
-background: linear-gradient(135deg, #d4af37 0%, #b28d22 100%);
+background: linear-gradient(135deg, #2554c7 0%, #1e429f 100%);
 transform: translateY(-2px);
-box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+box-shadow: 0 6px 20px rgba(30, 66, 159, 0.5);
 }
 
 /* Negro Metálico Pulido */
 .pay {
 background: linear-gradient(135deg, #1e1e24 0%, #111115 100%);
-color: #e2e8f0; /* Texto Plata */
+color: #e2e8f0;
 border: 1px solid rgba(255, 255, 255, 0.15);
 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .pay:hover {
-border-color: #ffffff;
+border-color: #3b82f6;
 background: linear-gradient(135deg, #25252c 0%, #16161c 100%);
 transform: translateY(-2px);
 }
@@ -182,13 +185,45 @@ color: #94a3b8;
 
 .link:hover {
 background: rgba(255, 255, 255, 0.03);
-border-color: #d4af37; /* Cambio sutil a oro al pasar el cursor */
+border-color: #3b82f6; /* Cambio a azul metálico */
 color: #ffffff;
 transform: translateY(-2px);
 }
 
-button:active {
-transform: translateY(0);
+/* BOTONES DE REDES Y UBICACIÓN */
+.social-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 12px;
+margin-top: 12px;
+}
+
+.social-grid .btn-link {
+margin-top: 0;
+font-size: 13px;
+padding: 12px;
+}
+
+.btn-geo {
+background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+color: #00f2fe;
+border: 1px solid rgba(0, 242, 254, 0.3);
+}
+.btn-geo:hover {
+border-color: #00f2fe;
+box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+transform: translateY(-2px);
+}
+
+.btn-social {
+background: linear-gradient(135deg, #111114 0%, #1e1e24 100%);
+color: #e2e8f0;
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.btn-social:hover {
+border-color: #3b82f6;
+color: #3b82f6;
+transform: translateY(-2px);
 }
 
 /* RESULTADOS MÍNIMALISTAS */
@@ -209,7 +244,7 @@ color: #ffffff;
 .total {
 font-size: 24px;
 font-weight: 700;
-color: #00f2fe !important; /* Acento Cian estrictamente aquí */
+color: #00f2fe !important;
 margin-top: 12px;
 padding-top: 12px;
 border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -221,17 +256,8 @@ color: #00f2fe !important;
 }
 
 /* SECCIÓN DE PAGOS */
-.paybox {
-background: rgba(15, 15, 18, 0.8);
-backdrop-filter: blur(10px);
-border: 1px solid rgba(212, 175, 55, 0.08);
-padding: 25px;
-border-radius: 16px;
-margin-top: 25px;
-}
-
-.paybox h3 {
-color: #d4af37; /* Oro */
+.paybox h3, .reviews-box h3 {
+color: #3b82f6; /* Azul Metálico */
 font-size: 16px;
 margin-top: 0;
 margin-bottom: 20px;
@@ -242,7 +268,7 @@ text-transform: uppercase;
 
 .paybox p {
 margin: 6px 0;
-color: #cbd5e1; /* Plata */
+color: #cbd5e1;
 font-size: 15px;
 }
 
@@ -251,28 +277,85 @@ color: #ffffff;
 font-weight: 600;
 }
 
-.paybox hr {
+.paybox hr, .reviews-box hr {
 border: 0;
 height: 1px;
 background: rgba(255, 255, 255, 0.06);
 margin: 20px 0;
 }
 
+/* SISTEMA DE CALIFICACIÓN POR ESTRELLAS */
+.rating-selector {
+display: flex;
+gap: 8px;
+margin: 8px 0 15px 0;
+}
+
+.rating-selector span {
+font-size: 26px;
+cursor: pointer;
+color: #334155;
+transition: color 0.2s;
+}
+
+.rating-selector span.active, .rating-selector span:hover {
+color: #3b82f6; /* Estrellas azul metálico */
+}
+
+/* FEED DE OPINIONES */
+.reviews-feed {
+max-height: 250px;
+overflow-y: auto;
+margin-top: 15px;
+padding-right: 5px;
+}
+
+.reviews-feed::-webkit-scrollbar {
+width: 4px;
+}
+.reviews-feed::-webkit-scrollbar-thumb {
+background: rgba(30, 66, 159, 0.4);
+border-radius: 4px;
+}
+
+.review-item {
+background: rgba(255, 255, 255, 0.02);
+padding: 12px;
+border-radius: 8px;
+margin-bottom: 10px;
+border-left: 3px solid #3b82f6;
+}
+
+.review-header {
+display: flex;
+justify-content: space-between;
+font-size: 13px;
+color: #94a3b8;
+margin-bottom: 4px;
+}
+
+.review-name {
+font-weight: 600;
+color: #ffffff;
+}
+
+.review-stars {
+color: #3b82f6;
+}
+
+.review-text {
+font-size: 14px;
+color: #cbd5e1;
+word-break: break-word;
+}
+
 /* RESPONSIVO */
 @media(max-width: 600px){
-body {
-padding: 10px;
-}
-.card {
-padding: 20px;
-}
-.console-box {
-width: 220px;
-height: 220px;
-}
-.console-box img {
-width: 170px;
-}
+body { padding: 10px; }
+.card, .paybox, .reviews-box { padding: 20px; }
+.console-box { width: 220px; height: 220px; }
+.console-box img { width: 170px; }
+.social-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -320,6 +403,38 @@ width: 170px;
 🎮 Tester de Controles
 </button>
 
+<a href="https://maps.app.goo.gl/x9gqptSPo6yqdxF1A" target="_blank" class="btn-link btn-geo">📍 Ver nuestra ubicación en Google Maps</a>
+
+<div class="social-grid">
+<a href="https://www.facebook.com/share/1BRU5UUK5c/" target="_blank" class="btn-link btn-social">🔵 Facebook</a>
+<a href="https://www.tiktok.com/@xeservicioelectronico?_r=1&_t=ZS-97ZOLYTu5zU" target="_blank" class="btn-link btn-social">🎵 TikTok</a>
+</div>
+<div style="margin-top: 12px;">
+<a href="https://youtube.com/@xeservicioelectronico?si=MDtE89WtQbayO_YN" target="_blank" class="btn-link btn-social">📺 YouTube</a>
+</div>
+
+</div>
+
+<div class="reviews-box">
+<h3>⭐ Opiniones de Clientes</h3>
+
+<div class="review-form">
+<input id="revName" placeholder="Tu Nombre o Usuario" style="padding: 10px; font-size: 14px;">
+<div class="rating-selector" id="starSelector">
+<span onclick="setRating(1)">★</span>
+<span onclick="setRating(2)">★</span>
+<span onclick="setRating(3)">★</span>
+<span onclick="setRating(4)">★</span>
+<span onclick="setRating(5)">★</span>
+</div>
+<textarea id="revText" rows="2" placeholder="Escribe tu reseña o experiencia con nuestro servicio..." style="padding: 10px; font-size: 14px; margin-bottom: 8px;"></textarea>
+<button class="pay" onclick="saveReview()" style="padding: 10px; font-size: 13px; margin-top: 5px;">Publicar Opinión</button>
+</div>
+
+<hr>
+
+<div class="reviews-feed" id="reviewsFeed">
+</div>
 </div>
 
 <div class="paybox">
@@ -347,6 +462,7 @@ Envía comprobante por WhatsApp para confirmar cita
 </div>
 
 <script>
+let currentRating = 0;
 
 const data = {
 
@@ -481,6 +597,7 @@ c.appendChild(o);
 });
 
 loadServices();
+renderReviews();
 
 function loadServices(){
 document.getElementById("consoleImg").src=imagenes[c.value]; 
@@ -536,6 +653,69 @@ Enviar comprobante`;
 window.open("https://wa.me/527471731852?text="+encodeURIComponent(msg));
 }
 
+function setRating(rating) {
+currentRating = rating;
+const stars = document.querySelectorAll('#starSelector span');
+stars.forEach((star, index) => {
+if(index < rating) {
+star.classList.add('active');
+} else {
+star.classList.remove('active');
+}
+});
+}
+
+function saveReview() {
+const nameInput = document.getElementById('revName');
+const textInput = document.getElementById('revText');
+
+if(!nameInput.value.trim() || currentRating === 0 || !textInput.value.trim()) {
+alert('Por favor completa todos los campos y selecciona tu calificación.');
+return;
+}
+
+const newReview = {
+name: nameInput.value.trim(),
+rating: currentRating,
+text: textInput.value.trim(),
+date: new Date().toLocaleDateString()
+};
+
+let reviews = JSON.parse(localStorage.getItem('xe_reviews')) || [];
+reviews.unshift(newReview);
+localStorage.setItem('xe_reviews', JSON.stringify(reviews));
+
+nameInput.value = '';
+textInput.value = '';
+setRating(0);
+
+renderReviews();
+}
+
+function renderReviews() {
+const feed = document.getElementById('reviewsFeed');
+let reviews = JSON.parse(localStorage.getItem('xe_reviews')) || [];
+
+if(reviews.length === 0) {
+feed.innerHTML = `<p style="color:#94a3b8; font-size:14px; text-align:center; margin-top:20px;">Aún no hay opiniones. ¡Sé el primero en calificar nuestro servicio!</p>`;
+return;
+}
+
+feed.innerHTML = '';
+reviews.forEach(r => {
+let starsHtml = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+feed.innerHTML += `
+<div class="review-item">
+<div class="review-header">
+<span class="review-name">👤 ${r.name}</span>
+<span class="review-stars">${starsHtml}</span>
+</div>
+<p class="review-text">${r.text}</p>
+<div style="font-size:11px; color:#64748b; text-align:right;">${r.date}</div>
+</div>
+`;
+});
+}
 </script>
 
 </body>
