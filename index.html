@@ -313,4 +313,131 @@ const data = {
 ["RAM/APU",2600,"2 Hrs"],
 ["MOSFET",1800,"2 Hrs"],
 ["Fuente",1200,"3 Hrs"],
-  
+["Cambio fuente",1500,"20 Min"],
+["Ventilador",1400,"10 Min"]
+],
+
+"PS4":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",700,"1 Hora"],
+["Disco 1TB",2000,"1 Hora"],
+["Disco 500GB",1600,"1 Hora"],
+["HDMI",1000,"1 Hora"],
+["Encoder",1100,"1 Hora"],
+["Lectora",1000,"2 Hrs"]
+],
+
+"PS4 Pro":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",900,"1 Hora"],
+["Disco 1TB",2000,"1 Hora"],
+["Disco 500GB",1600,"1 Hora"],
+["HDMI",1000,"1 Hora"],
+["Encoder",1100,"1 Hora"],
+["Lectora",1200,"2 Hrs"]
+],
+
+"PS5":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",1500,"1 Hora"],
+["SSD chipset",2400,"1 Hora"],
+["HDMI",1500,"1 Hora"],
+["Encoder",1500,"1 Hora"],
+["Fuente",1200,"2 Hrs"],
+["Cambio fuente",1800,"30 Min"],
+["Southbridge",2500,"3 Hrs"],
+["BIOS",2000,"3 Hrs"],
+["IC/Fusible",2000,"4 Hrs"]
+],
+
+"Nintendo Switch":[
+["Revisión / Diagnóstico",200,"1 a 2 días"],
+["Mantenimiento",500,"1 Hora"],
+["Puerto de Carga",800,"1 Hora"],
+["Cambio de Pantalla",1500,"2 Hrs"],
+["Joy-Con Drift",250,"30 Min"]
+]
+
+};
+
+const imagenes = {
+"Xbox One":"xbox-one.png",
+"Xbox One S":"xbox-one-s.png",
+"Xbox Series S":"xbox-series-s.png",
+"Xbox Series X":"xbox-series-x.png",
+"PS4":"ps4.png",
+"PS4 Pro":"ps4-pro.png",
+"PS5":"ps5.png",
+"Nintendo Switch":"switch.png"
+}; 
+
+let c=document.getElementById("consola");
+let s=document.getElementById("servicio");
+
+Object.keys(data).forEach(x=>{
+let o=document.createElement("option");
+o.value=x;
+o.textContent=x;
+c.appendChild(o);
+});
+
+loadServices();
+
+function loadServices(){
+document.getElementById("consoleImg").src=imagenes[c.value]; 
+s.innerHTML="";
+data[c.value].forEach(x=>{
+let o=document.createElement("option");
+o.value=x[0];
+o.textContent=x[0];
+s.appendChild(o);
+});
+calc();
+}
+
+function calc(){
+let d=data[c.value].find(x=>x[0]===s.value);
+if(d){
+precio.innerText="$"+d[1];
+tiempo.innerText=d[2];
+total.innerText="$"+d[1];
+}
+}
+
+function sendWA(){
+let msg=`🎮 XE SERVICIO ELECTRÓNICO
+
+👤 ${cliente.value}
+🕹 ${c.value}
+🔧 ${s.value}
+
+💰 ${total.innerText}
+⏱ ${tiempo.innerText}
+
+📝 ${obs.value}`;
+
+window.open("https://wa.me/527471731852?text="+encodeURIComponent(msg));
+}
+
+function agendar(){
+let msg=`💳 XE SERVICIO ELECTRÓNICO
+
+📅 AGENDAR REPARACIÓN
+
+👤 ${cliente.value}
+🕹 ${c.value}
+🔧 ${s.value}
+
+💰 ${total.innerText}
+💳 Anticipo $200
+
+🏦 Banorte / MercadoPago
+Enviar comprobante`;
+
+window.open("https://wa.me/527471731852?text="+encodeURIComponent(msg));
+}
+
+</script>
+
+</body>
+</html>
