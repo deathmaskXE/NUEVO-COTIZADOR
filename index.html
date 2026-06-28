@@ -412,11 +412,11 @@ body { padding: 10px; }
 <button class="wa" onclick="sendWA()">📲 WhatsApp</button>
 <button class="pay" onclick="agendar()">💳 Anticipo y agendar</button>
 
-<button class="link" onclick="window.open('https://deathmaskxe.github.io/CotizadorXE/')">
+<button class="link" onclick="abrirCotizador()">
 🕹 Cotizador de Controles
 </button>
 
-<button class="link" onclick="window.open('https://deathmaskxe.github.io/Tester-de-funcionalidad-controles/')">
+<button class="link" onclick="abrirTester()">
 🎮 Tester de Controles
 </button>
 
@@ -615,7 +615,7 @@ loadServices();
 renderReviews();
 
 function loadServices(){
-// Transición interna controlada de imagen
+// Transición interna de imagen
 const targetImg = document.getElementById("consoleImg");
 targetImg.style.opacity = 0;
 targetImg.style.transform = "scale(0.9)";
@@ -652,6 +652,15 @@ window.open("https://wa.me/527471731852?text="+encodeURIComponent(msg));
 function agendar(){
 let msg=`💳 XE SERVICIO ELECTRÓNICO\n\n📅 AGENDAR REPARACIÓN\n\n👤 ${cliente.value}\n🕹 ${c.value}\n🔧 ${s.value}\n\n💰 ${total.innerText}\n💳 Anticipo $200\n\n🏦 Banorte / MercadoPago\nEnviar comprobante`;
 window.open("https://wa.me/527471731852?text="+encodeURIComponent(msg));
+}
+
+// FUNCIONES DE DIRECCIONAMIENTO CORREGIDAS CON MAYÚSCULAS EXACTAS DE GITHUB
+function abrirCotizador(){
+    window.open("https://deathmaskxe.github.io/CotizadorXE/");
+}
+
+function abrirTester(){
+    window.open("https://deathmaskxe.github.io/Tester-de-funcionalidad-controles/");
 }
 
 function setRating(rating) {
