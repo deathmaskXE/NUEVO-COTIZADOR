@@ -446,7 +446,6 @@ body { padding: 10px; }
 
 <body>
 
-<!-- ESTRUCTURA DE LA VENTANA MODAL DE BIENVENIDA -->
 <div id="promoModal" class="modal-overlay">
     <div class="modal-content">
         <h2 class="modal-title">🔥 PROMOCIÓN DEL DÍA</h2>
@@ -481,7 +480,8 @@ body { padding: 10px; }
 <div class="logo"> 
     <img src="logo.png" class="logo-img"> 
     <div class="console-box"> 
-        <img id="consoleImg" src="xbox-one.png"> </div> 
+        <img id="consoleImg" src="xbox-one.png"> 
+    </div> 
 </div>
 
 <div class="card">
@@ -767,22 +767,5 @@ function abrirCotizador(){
     window.open("https://deathmaskxe.github.io/Tester-Controles/");
 }
 
-function abrirTester(){
-    window.open("https://deathmaskxe.github.io/Tester-de-funcionalidad-controles/");
-}
-
-function setRating(rating) {
-currentRating = rating;
-const stars = document.querySelectorAll('#starSelector span');
-stars.forEach((star, index) => {
-if(index < rating) {
-star.classList.add('active');
-} else {
-star.classList.remove('active');
-}
-});
-}
-
-function saveReview() {
-const nameInput = document.getElementById('revName');
-const textInput = document.getElem
+function abrir
+    
