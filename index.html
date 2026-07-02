@@ -209,25 +209,6 @@ color: white;
 transform: translateY(-1px);
 }
 
-/* ESTILO PREMIUM DISEÑADO PARA EL NUEVO BOTÓN DE LA TIENDA DE ESQUEMAS */
-.shop-neon-btn {
-background: rgba(0, 242, 254, 0.05);
-color: #00f2fe;
-border: 1px solid rgba(0, 242, 254, 0.25);
-text-shadow: 0 0 8px rgba(0, 242, 254, 0.4);
-box-shadow: 0 0 15px rgba(0, 242, 254, 0.05);
-font-weight: 700;
-}
-
-.shop-neon-btn:hover {
-background: #00f2fe;
-color: #06070b;
-box-shadow: 0 0 20px rgba(0, 242, 254, 0.4), 0 0 35px rgba(0, 242, 254, 0.2);
-border-color: #00f2fe;
-transform: translateY(-2px);
-text-shadow: none;
-}
-
 /* BOTÓN DE UBICACIÓN DESTACADO EN CIAN */
 .btn-geo {
 background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
@@ -439,9 +420,9 @@ body { padding: 10px; }
 🎮 Tester de Controles
 </button>
 
-<a href="https://deathmaskxe.github.io/TIENDAESQUEMAS/index.html" target="_blank" class="btn-link-action shop-neon-btn">
+<button class="link" onclick="abrirTiendaEsquemas()">
 🛠️ Tienda de Esquemas Técnicos
-</a>
+</button>
 
 <a href="https://maps.app.goo.gl/x9gqptSPo6yqdxF1A" target="_blank" class="btn-link-action btn-geo">📍 Ver nuestra ubicación en Google Maps</a>
 
@@ -683,6 +664,10 @@ function abrirCotizador(){
 
 function abrirTester(){
     window.open("https://deathmaskxe.github.io/Tester-de-funcionalidad-controles/");
+}
+
+function abrirTiendaEsquemas(){
+    window.open("https://deathmaskxe.github.io/TIENDAESQUEMAS/index.html");
 }
 
 function setRating(rating) {
